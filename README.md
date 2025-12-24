@@ -1,147 +1,69 @@
-# Neovim config
+# nvim-config
 
-<a href="https://dotfyle.com/RisGar/dotfiles-config-nvim"><img src="https://dotfyle.com/RisGar/dotfiles-config-nvim/badges/plugins?style=flat" /></a>
-<a href="https://dotfyle.com/RisGar/dotfiles-config-nvim"><img src="https://dotfyle.com/RisGar/dotfiles-config-nvim/badges/leaderkey?style=flat" /></a>
-<a href="https://dotfyle.com/RisGar/dotfiles-config-nvim"><img src="https://dotfyle.com/RisGar/dotfiles-config-nvim/badges/plugin-manager?style=flat" /></a>
+[![wakatime](https://wakatime.com/badge/user/452b0d4c-9951-457d-868a-2007cd651d66/project/fa13f39d-8ba5-40f3-a120-60b0ad4d0c27.svg)](https://wakatime.com/badge/user/452b0d4c-9951-457d-868a-2007cd651d66/project/fa13f39d-8ba5-40f3-a120-60b0ad4d0c27)
 
 ## Install Instructions
 
-> Install requires Neovim 0.9+. Always review the code before installing a configuration.
-
-Clone the repository and install the plugins:
+Open this config with nix:
 
 ```sh
-git clone git@github.com:RisGar/dotfiles ~/.config/RisGar/dotfiles
+nix run github:RisGar/nix-config
 ```
 
-Open Neovim with this config:
+Or use it as an input for your flake:
 
-```sh
-NVIM_APPNAME=RisGar/dotfiles/.config/nvim nvim
+```nix
+inputs = {
+    nixCats-nvim = {
+      url = "git+file:///Users/rishab/Documents/Programming/nvim-config";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+};
 ```
 
 ## Plugins
 
-### ai
-
-- [yetone/avante.nvim](https://dotfyle.com/plugins/yetone/avante.nvim)
-
-### color
-
-- [xzbdmw/colorful-menu.nvim](https://dotfyle.com/plugins/xzbdmw/colorful-menu.nvim)
-
-### colorscheme
-
-- [olimorris/onedarkpro.nvim](https://dotfyle.com/plugins/olimorris/onedarkpro.nvim)
-
-### comment
-
-- [folke/todo-comments.nvim](https://dotfyle.com/plugins/folke/todo-comments.nvim)
-- [folke/ts-comments.nvim](https://dotfyle.com/plugins/folke/ts-comments.nvim)
-
-### completion
-
-- [zbirenbaum/copilot.lua](https://dotfyle.com/plugins/zbirenbaum/copilot.lua)
-
-### diagnostics
-
-- [folke/trouble.nvim](https://dotfyle.com/plugins/folke/trouble.nvim)
-
-### editing-support
-
-- [windwp/nvim-autopairs](https://dotfyle.com/plugins/windwp/nvim-autopairs)
-- [echasnovski/mini.ai](https://dotfyle.com/plugins/echasnovski/mini.ai)
-- [folke/snacks.nvim](https://dotfyle.com/plugins/folke/snacks.nvim)
-- [nvim-treesitter/nvim-treesitter-context](https://dotfyle.com/plugins/nvim-treesitter/nvim-treesitter-context)
-- [HiPhish/rainbow-delimiters.nvim](https://dotfyle.com/plugins/HiPhish/rainbow-delimiters.nvim)
-
-### file-explorer
-
-- [stevearc/oil.nvim](https://dotfyle.com/plugins/stevearc/oil.nvim)
-
-### formatting
-
-- [stevearc/conform.nvim](https://dotfyle.com/plugins/stevearc/conform.nvim)
-
-### game
-
-- [ThePrimeagen/vim-be-good](https://dotfyle.com/plugins/ThePrimeagen/vim-be-good)
-
-### git
-
-- [lewis6991/gitsigns.nvim](https://dotfyle.com/plugins/lewis6991/gitsigns.nvim)
-
-### icon
-
-- [nvim-tree/nvim-web-devicons](https://dotfyle.com/plugins/nvim-tree/nvim-web-devicons)
-
-### keybinding
-
-- [folke/which-key.nvim](https://dotfyle.com/plugins/folke/which-key.nvim)
-
-### lsp
-
-- [mrcjkb/rustaceanvim](https://dotfyle.com/plugins/mrcjkb/rustaceanvim)
-- [neovim/nvim-lspconfig](https://dotfyle.com/plugins/neovim/nvim-lspconfig)
-- [mfussenegger/nvim-lint](https://dotfyle.com/plugins/mfussenegger/nvim-lint)
-- [j-hui/fidget.nvim](https://dotfyle.com/plugins/j-hui/fidget.nvim)
-- [mfussenegger/nvim-jdtls](https://dotfyle.com/plugins/mfussenegger/nvim-jdtls)
-- [b0o/SchemaStore.nvim](https://dotfyle.com/plugins/b0o/SchemaStore.nvim)
-- [jmbuhr/otter.nvim](https://dotfyle.com/plugins/jmbuhr/otter.nvim)
-
-### markdown-and-latex
-
-- [MeanderingProgrammer/render-markdown.nvim](https://dotfyle.com/plugins/MeanderingProgrammer/render-markdown.nvim)
-
-### media
-
-- [HakonHarnes/img-clip.nvim](https://dotfyle.com/plugins/HakonHarnes/img-clip.nvim)
-
-### motion
-
-- [folke/flash.nvim](https://dotfyle.com/plugins/folke/flash.nvim)
-- [tris203/precognition.nvim](https://dotfyle.com/plugins/tris203/precognition.nvim)
-
-### nvim-dev
-
-- [folke/lazydev.nvim](https://dotfyle.com/plugins/folke/lazydev.nvim)
-- [nvim-lua/plenary.nvim](https://dotfyle.com/plugins/nvim-lua/plenary.nvim)
-- [MunifTanjim/nui.nvim](https://dotfyle.com/plugins/MunifTanjim/nui.nvim)
-
-### plugin-manager
-
-- [folke/lazy.nvim](https://dotfyle.com/plugins/folke/lazy.nvim)
-
-### programming-languages-support
-
-- [chomosuke/typst-preview.nvim](https://dotfyle.com/plugins/chomosuke/typst-preview.nvim)
-
-### search
-
-- [MagicDuck/grug-far.nvim](https://dotfyle.com/plugins/MagicDuck/grug-far.nvim)
-
-### snippet
-
-- [rafamadriz/friendly-snippets](https://dotfyle.com/plugins/rafamadriz/friendly-snippets)
-- [L3MON4D3/LuaSnip](https://dotfyle.com/plugins/L3MON4D3/LuaSnip)
-
-### statusline
-
-- [nvim-lualine/lualine.nvim](https://dotfyle.com/plugins/nvim-lualine/lualine.nvim)
-
-### syntax
-
-- [nvim-treesitter/nvim-treesitter](https://dotfyle.com/plugins/nvim-treesitter/nvim-treesitter)
-- [echasnovski/mini.surround](https://dotfyle.com/plugins/echasnovski/mini.surround)
-
-### tabline
-
-- [akinsho/bufferline.nvim](https://dotfyle.com/plugins/akinsho/bufferline.nvim)
+- [xzbdmw/colorful-menu.nvim](https://github.com/xzbdmw/colorful-menu.nvim)
+- [olimorris/onedarkpro.nvim](https://github.com/olimorris/onedarkpro.nvim)
+- [folke/todo-comments.nvim](https://github.com/folke/todo-comments.nvim)
+- [folke/ts-comments.nvim](https://github.com/folke/ts-comments.nvim)
+- [folke/trouble.nvim](https://github.com/folke/trouble.nvim)
+- [windwp/nvim-autopairs](https://github.com/windwp/nvim-autopairs)
+- [echasnovski/mini.ai](https://github.com/echasnovski/mini.ai)
+- [folke/snacks.nvim](https://github.com/folke/snacks.nvim)
+- [nvim-treesitter/nvim-treesitter-context](https://github.com/nvim-treesitter/nvim-treesitter-context)
+- [HiPhish/rainbow-delimiters.nvim](https://github.com/HiPhish/rainbow-delimiters.nvim)
+- [stevearc/oil.nvim](https://github.com/stevearc/oil.nvim)
+- [stevearc/conform.nvim](https://github.com/stevearc/conform.nvim)
+- [ThePrimeagen/vim-be-good](https://github.com/ThePrimeagen/vim-be-good)
+- [lewis6991/gitsigns.nvim](https://github.com/lewis6991/gitsigns.nvim)
+- [nvim-tree/nvim-web-devicons](https://github.com/nvim-tree/nvim-web-devicons)
+- [folke/which-key.nvim](https://github.com/folke/which-key.nvim)
+- [mrcjkb/rustaceanvim](https://github.com/mrcjkb/rustaceanvim)
+- [neovim/nvim-lspconfig](https://github.com/neovim/nvim-lspconfig)
+- [mfussenegger/nvim-lint](https://github.com/mfussenegger/nvim-lint)
+- [j-hui/fidget.nvim](https://github.com/j-hui/fidget.nvim)
+- [mfussenegger/nvim-jdtls](https://github.com/mfussenegger/nvim-jdtls)
+- [b0o/SchemaStore.nvim](https://github.com/b0o/SchemaStore.nvim)
+- [MeanderingProgrammer/render-markdown.nvim](https://github.com/MeanderingProgrammer/render-markdown.nvim)
+- [tris203/precognition.nvim](https://github.com/tris203/precognition.nvim)
+- [folke/lazydev.nvim](https://github.com/folke/lazydev.nvim)
+- [nvim-lua/plenary.nvim](https://github.com/nvim-lua/plenary.nvim)
+- [chomosuke/typst-preview.nvim](https://github.com/chomosuke/typst-preview.nvim)
+- [rafamadriz/friendly-snippets](https://github.com/rafamadriz/friendly-snippets)
+- [L3MON4D3/LuaSnip](https://github.com/L3MON4D3/LuaSnip)
+- [nvim-lualine/lualine.nvim](https://github.com/nvim-lualine/lualine.nvim)
+- [nvim-treesitter/nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter)
+- [echasnovski/mini.surround](https://github.com/echasnovski/mini.surround)
+- [lervag/vimtex: VimTeX](https://github.com/lervag/vimtex)
 
 ## Language Servers
 
 - astro
+- bashls
 - clangd
+- cssls
+- eslint
 - gleam
 - html
 - jdtls
@@ -149,10 +71,11 @@ NVIM_APPNAME=RisGar/dotfiles/.config/nvim nvim
 - julials
 - lua_ls
 - marksman
+- nixd
 - ocamllsp
+- rust_analyzer
 - svelte
+- taplo
 - texlab
 - vtsls
 - yamlls
-
-This readme was generated by [Dotfyle](https://dotfyle.com)
