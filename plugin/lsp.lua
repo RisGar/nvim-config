@@ -88,12 +88,6 @@ vim.lsp.config("clangd", {
 	},
 })
 
-vim.lsp.config("texlab", {
-	keys = {
-		{ "<leader>K", "<plug>(vimtex-doc-package)", desc = "vimtex docs", silent = true },
-	},
-})
-
 vim.lsp.config("tailwind", {
 	filetypes = { "astro" },
 })

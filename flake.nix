@@ -162,12 +162,10 @@
               luasnip
               SchemaStore-nvim
               blink-cmp
-              bufferline-nvim
               clangd_extensions-nvim
               colorful-menu-nvim
               conform-nvim
               fidget-nvim
-              flash-nvim
               friendly-snippets
               gitsigns-nvim
               lualine-nvim
@@ -198,7 +196,6 @@
               vim-dadbod-completion
               vim-dadbod-ui
               vim-wakatime
-              vimtex
               which-key-nvim
               ts-comments-nvim
               typst-preview-nvim
@@ -207,8 +204,6 @@
               vim-dadbod-completion
               vim-dadbod-ui
               vim-wakatime
-              vimtex
-              which-key-nvim
             ];
           };
 
@@ -219,6 +214,7 @@
               nvim-jdtls
               rustaceanvim
               lazydev-nvim
+              vimtex
             ];
           };
 

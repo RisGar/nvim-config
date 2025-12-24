@@ -73,16 +73,5 @@ require("clangd_extensions").setup({
 	},
 })
 
--- vimtex
-vim.g.vimtex_mappings_disable = { ["n"] = { "K" } } -- disable `K` as it conflicts with LSP hover
-vim.g.vimtex_view_method = "zathura"
-
-vim.api.nvim_create_autocmd("FileType", {
-	pattern = { "tex", "plaintex" },
-	callback = function()
-		vim.keymap.set("n", "<LocalLeader>l", "<Nop>", { buffer = true, desc = "+vimtex" })
-	end,
-})
-
 -- vim-dadbod
 vim.g.db_ui_use_nerd_fonts = 1
