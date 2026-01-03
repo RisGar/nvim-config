@@ -2,24 +2,21 @@
   description = "neovim config using nixCats";
 
   inputs = {
-    # see :help nixCats.flake.inputs
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
     nixCats.url = "github:BirdeeHub/nixCats-nvim";
     nvim-treesitter-main.url = "github:iofq/nvim-treesitter-main";
+
     # neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
 
-    "plugins-nvim-dev-container" = {
-      url = "github:esensar/nvim-dev-container";
-      flake = false;
-    };
+    # see :help nixCats.flake.inputs
   };
 
   # see :help nixCats.flake.outputs
   outputs =
     {
+      self,
       nixpkgs,
       nixCats,
-      nvim-treesitter-main,
       ...
     }@inputs:
     let
@@ -59,7 +56,7 @@
           # (utils.fixSystemizedOverlay inputs.codeium.overlays
           #   (system: inputs.codeium.overlays.${system}.default)
           # )
-          nvim-treesitter-main.overlays.default
+          inputs.nvim-treesitter-main.overlays.default
           (final: prev: {
             vimPlugins = prev.vimPlugins.extend (
               f: p: {
@@ -122,61 +119,57 @@
                 vscode-langservers-extracted
                 vtsls
                 yaml-language-server
+                clang-tools
               ]
               ++ [
                 mermaid-cli # for snacks.image
                 tree-sitter # for nvim-treesitter
+                devpod
               ];
           };
 
           # This is for plugins that will load at startup without using packadd:
           startupPlugins = {
             #TODO:nvim-dap nvim-dap-ui nvim-dap-virtual-text
-            general =
-              with pkgs.vimPlugins;
-              [
-                #nvim-dev-container
-                #tree-sitter-ghostty
-                SchemaStore-nvim
-                blink-cmp
-                clangd_extensions-nvim
-                colorful-menu-nvim
-                conform-nvim
-                fidget-nvim
-                friendly-snippets
-                gitsigns-nvim
-                lazydev-nvim
-                lualine-nvim
-                luasnip
-                mini-ai
-                mini-surround
-                nvim-autopairs
-                nvim-lint
-                nvim-lspconfig
-                nvim-treesitter
-                nvim-treesitter-context
-                nvim-treesitter-textobjects
-                nvim-web-devicons
-                oil-nvim
-                onedarkpro-nvim
-                precognition-nvim
-                rainbow-delimiters-nvim
-                render-markdown-nvim
-                snacks-nvim
-                todo-comments-nvim
-                trouble-nvim
-                ts-comments-nvim
-                typst-preview-nvim
-                vim-be-good
-                vim-dadbod
-                vim-dadbod-completion
-                vim-dadbod-ui
-                vim-wakatime
-                which-key-nvim
-              ]
-              ++ (with pkgs.neovimPlugins; [
-                nvim-dev-container
-              ]);
+            general = with pkgs.vimPlugins; [
+              SchemaStore-nvim
+              blink-cmp
+              clangd_extensions-nvim
+              colorful-menu-nvim
+              conform-nvim
+              fidget-nvim
+              friendly-snippets
+              gitsigns-nvim
+              lazydev-nvim
+              lualine-nvim
+              luasnip
+              mini-ai
+              mini-surround
+              nvim-autopairs
+              nvim-lint
+              nvim-lspconfig
+              nvim-treesitter
+              nvim-treesitter-context
+              nvim-treesitter-textobjects
+              nvim-web-devicons
+              oil-nvim
+              onedarkpro-nvim
+              precognition-nvim
+              rainbow-delimiters-nvim
+              render-markdown-nvim
+              snacks-nvim
+              todo-comments-nvim
+              trouble-nvim
+              ts-comments-nvim
+              typst-preview-nvim
+              vim-be-good
+              vim-dadbod
+              vim-dadbod-completion
+              vim-dadbod-ui
+              vim-wakatime
+              which-key-nvim
+              telescope-nvim
+            ];
           };
 
           # not loaded automatically at startup.
@@ -247,13 +240,19 @@
             # they contain a settings set defined above
             # see :help nixCats.flake.outputs.settings
             settings = {
-              suffix-path = true;
+              suffix-path = false;
               suffix-LD = true;
               wrapRc = true;
               # IMPORTANT:
               # your alias may not conflict with your other packages.
               # aliases = [ "vim" ];
               # neovim-unwrapped = inputs.neovim-nightly-overlay.packages.${pkgs.stdenv.hostPlatform.system}.neovim;
+              hosts = {
+                python3.enable = true;
+                node.enable = true;
+                ruby.enable = true;
+                perl.enable = true;
+              };
             };
             # and a set of categories that you want
             # (and other information to pass to lua)
@@ -349,6 +348,7 @@
 
         inherit utils nixosModule homeModule;
         inherit (utils) templates;
+
       }
     );
 }
