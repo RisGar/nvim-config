@@ -43,12 +43,6 @@ require("conform").setup({
 		end
 		return { timeout_ms = 500 }
 	end,
-
-	formatters = {
-		biome = {
-			require_cwd = true,
-		},
-	},
 })
 
 vim.keymap.set({ "n", "v" }, "<leader>cf", function()
