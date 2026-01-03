@@ -1,0 +1,28 @@
+on:
+  pull_request:
+  push:
+    branches:
+      - master
+
+jobs:
+  build-pkg:
+    name: Build Nix package
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [macos-latest, ubuntu-latest]
+    permissions:
+      id-token: write
+      contents: read
+    steps:
+      - uses: actions/checkout@v6.0.1
+      - name: Check Nix flake inputs
+        uses: DeterminateSystems/flake-checker-action@main # This action
+      - name: Install Nix
+        uses: DeterminateSystems/determinate-nix-action@v3.15.1
+      - name: Use Action cache
+        uses: DeterminateSystems/magic-nix-cache-action@main
+        with:
+          diff-store: true
+      - name: Build default package
+        run: nix build
