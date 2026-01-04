@@ -7,15 +7,15 @@
 Open this config with nix:
 
 ```sh
-nix run github:RisGar/nix-config
+nix run github:RisGar/nvim-config
 ```
 
 Or use it as an input for your flake:
 
 ```nix
 inputs = {
-    nixCats-nvim = {
-      url = "git+file:///Users/rishab/Documents/Programming/nvim-config";
+    nvim-config = {
+      url = "github:RisGar/nvim-config";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 };
