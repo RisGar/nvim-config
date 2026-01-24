@@ -15,7 +15,7 @@ jobs:
       id-token: write
       contents: read
     steps:
-      - uses: actions/checkout@v6.0.1
+      - uses: actions/checkout@v6.0.2
       - name: Check Nix flake inputs
         uses: DeterminateSystems/flake-checker-action@main # This action
       - name: Install Nix
