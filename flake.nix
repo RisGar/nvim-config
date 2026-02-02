@@ -2,9 +2,8 @@
   description = "neovim config using nixCats";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixCats.url = "github:BirdeeHub/nixCats-nvim";
-    nvim-treesitter-main.url = "github:iofq/nvim-treesitter-main";
 
     # neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
 
@@ -56,18 +55,6 @@
           # (utils.fixSystemizedOverlay inputs.codeium.overlays
           #   (system: inputs.codeium.overlays.${system}.default)
           # )
-          inputs.nvim-treesitter-main.overlays.default
-          (final: prev: {
-            vimPlugins = prev.vimPlugins.extend (
-              f: p: {
-                nvim-treesitter = p.nvim-treesitter.withAllGrammars; # or withPlugins...
-                # also redefine nvim-treesitter-textobjects (any other plugins that depend on nvim-treesitter)
-                nvim-treesitter-textobjects = p.nvim-treesitter-textobjects.overrideAttrs {
-                  dependencies = [ f.nvim-treesitter ];
-                };
-              }
-            );
-          })
         ];
 
       # see :help nixCats.flake.outputs.categories
@@ -106,7 +93,7 @@
                 jdt-language-server
                 lua-language-server
                 markdownlint-cli2
-                marksman
+                # marksman # TODO: dotnet takes ages to build
                 prettierd
                 ruff
                 ty
@@ -123,8 +110,6 @@
               ]
               ++ [
                 mermaid-cli # for snacks.image
-                tree-sitter # for nvim-treesitter
-                devpod
               ];
           };
 
@@ -148,7 +133,7 @@
               nvim-autopairs
               nvim-lint
               nvim-lspconfig
-              nvim-treesitter
+              nvim-treesitter.withAllGrammars
               nvim-treesitter-context
               nvim-treesitter-textobjects
               nvim-web-devicons
@@ -345,6 +330,7 @@
 
         nixosModules.default = nixosModule;
         homeModules.default = homeModule;
+        homeManagerModules.default = homeModule;
 
         inherit utils nixosModule homeModule;
         inherit (utils) templates;
