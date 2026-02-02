@@ -4,6 +4,7 @@ end
 
 vim.lsp.inlay_hint.enable(true, nil)
 vim.diagnostic.config({ virtual_text = true })
+-- TODO: lsp foldexprs vs ts foldexprs
 
 vim.lsp.enable({
 	"astro",
