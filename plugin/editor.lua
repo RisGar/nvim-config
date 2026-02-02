@@ -3,62 +3,18 @@ if vim.g.vscode then
 end
 
 -- nvim-treesitter
-local ts = require("nvim-treesitter")
-ts.setup({})
-
-ts.install({ "stable", "unstable" }, { summary = true })
-
-local installed = {}
-for _, lang in ipairs(ts.get_installed("parsers")) do
-	installed[lang] = true
-end
-
-local function have(ft)
-	local lang = vim.treesitter.language.get_lang(ft)
-	if lang == nil or installed[lang] == nil then
-		return false
-	end
-	return true
-end
-
 vim.api.nvim_create_autocmd("FileType", {
 	group = vim.api.nvim_create_augroup("nvim_treesitter", { clear = true }),
 	callback = function(ev)
-		if not have(ev.match) then
+		if vim.treesitter.get_parser(ev.buf, nil, { error = false }) == nil then
 			return
 		end
 
-		vim.treesitter.start()
+		vim.treesitter.start(ev.buf)
 		vim.wo.foldexpr = "v:lua.vim.treesitter.foldexpr()"
 		vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
 	end,
 })
-
-vim.api.nvim_create_autocmd("User", {
-	pattern = "TSUpdate",
-	callback = function()
-		-- remove when support is upstreamed
-		require("nvim-treesitter.parsers").crystal = {
-			install_info = {
-				url = "https://github.com/crystal-lang-tools/tree-sitter-crystal",
-				generate = false,
-				generate_from_json = false,
-				queries = "queries/nvim",
-			},
-		}
-
-		require("nvim-treesitter.parsers").ghostty = {
-			install_info = {
-				url = "https://github.com/bezhermoso/tree-sitter-ghostty",
-				generate = false,
-				generate_from_json = false,
-				queries = "queries/ghostty",
-			},
-		}
-	end,
-})
-
-vim.treesitter.language.register("crystal", { "cr" })
 
 -- nvim-treesitter-context
 require("treesitter-context").setup({ max_lines = 3 })
