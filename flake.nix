@@ -4,7 +4,6 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixCats.url = "github:BirdeeHub/nixCats-nvim";
-
     # neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
 
     # see :help nixCats.flake.inputs
@@ -84,29 +83,35 @@
             general =
               with pkgs;
               [
-                astro-language-server
+                (callPackage ./pkgs/astro-language-server.nix { })
+                statix
                 bash-language-server
                 biome
+                clang-tools
                 docker-language-server
                 fish-lsp
                 gleam
                 jdt-language-server
                 lua-language-server
                 markdownlint-cli2
-                # marksman # TODO: dotnet takes ages to build
+                marksman
+                nixd
+                nixfmt
+                ocamlPackages.ocaml-lsp
+                ocamlPackages.ocamlformat
                 prettierd
                 ruff
-                ty
                 stylua
                 svelte-language-server
                 tailwindcss-language-server
                 taplo
                 texlab
                 tinymist
+                ty
                 vscode-langservers-extracted
                 vtsls
                 yaml-language-server
-                clang-tools
+                dune
               ]
               ++ [
                 mermaid-cli # for snacks.image
@@ -244,6 +249,15 @@
             categories = {
               general = true;
             };
+
+            extra = {
+              astro-ts-plugin =
+                (pkgs.callPackage ./pkgs/astro-language-server.nix { }).outPath
+                + "/lib/node_modules/astro-language-server/packages/language-tools/ts-plugin";
+              svelte-ts-plugin =
+                pkgs.svelte-language-server.outPath
+                + "/lib/node_modules/svelte-language-server/packages/typescript-plugin";
+            };
           };
       };
       # In this section, the main thing you will need to do is change the default package name
@@ -283,7 +297,7 @@
             name = defaultPackageName;
             packages = [ defaultPackage ];
             inputsFrom = [ ];
-            shellHook = '''';
+            shellHook = "";
           };
         };
 
