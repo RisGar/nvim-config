@@ -10,7 +10,6 @@ vim.lsp.enable({
 	"astro",
 	"ty",
 	"bashls",
-	"biome",
 	"clangd",
 	"cssls",
 	"docker_language_server",
@@ -65,16 +64,12 @@ vim.lsp.config("vtsls", {
 				globalPlugins = {
 					{
 						name = "@astrojs/ts-plugin",
-						-- TODO:
-						location = vim.fn.stdpath("data")
-							.. "/mason/packages/astro-language-server/node_modules/@astrojs/ts-plugin",
+						location = nixCats.extra("astro-ts-plugin"),
 						enableForWorkspaceTypeScriptVersions = true,
 					},
 					{
-						name = "typescript-svelte-plugin",
-						-- TODO:
-						location = vim.fn.stdpath("data")
-							.. "/mason/packages/svelte-language-server/node_modules/typescript-svelte-plugin",
+						name = "typescript-plugin",
+						location = nixCats.extra("svelte-ts-plugin"),
 						enableForWorkspaceTypeScriptVersions = true,
 					},
 				},
