@@ -112,6 +112,7 @@
                 vtsls
                 yaml-language-server
                 dune
+                rust-analyzer
               ]
               ++ [
                 mermaid-cli # for snacks.image
@@ -159,6 +160,7 @@
               vim-wakatime
               which-key-nvim
               telescope-nvim
+              rustaceanvim
             ];
           };
 
@@ -167,7 +169,6 @@
           optionalPlugins = {
             general = with pkgs.vimPlugins; [
               nvim-jdtls
-              rustaceanvim
               vimtex
             ];
           };
