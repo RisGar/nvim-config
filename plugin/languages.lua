@@ -15,13 +15,6 @@ vim.lsp.config("jsonls", {
 	},
 })
 
--- {
--- 	"mrcjkb/rustaceanvim",
--- 	version = "^6", -- Recommended
--- 	lazy = false, -- This plugin is already lazy
--- },
---
-
 -- render-markdown
 require("render-markdown").setup({
 	preset = "obsidian",

@@ -31,9 +31,9 @@ vim.lsp.enable({
 	"vtsls",
 	"yamlls",
 	"ruff",
+	"rust_analyzer",
 
 	-- activated through seperate plugin:
-	-- "rust_analyzer"
 	-- "jdtls",
 })
 

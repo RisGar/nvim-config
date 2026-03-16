@@ -160,7 +160,6 @@
               vim-wakatime
               which-key-nvim
               telescope-nvim
-              rustaceanvim
             ];
           };
 
