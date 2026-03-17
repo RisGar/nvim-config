@@ -68,3 +68,8 @@ end, { desc = "show motions" })
 
 -- rainbow-delimiters
 require("rainbow-delimiters.setup").setup({}) --TODO: do i need to call setup?
+
+require("nvim-highlight-colors").setup({
+	render = "virtual",
+	enable_tailwind = true,
+})
