@@ -80,43 +80,39 @@
           # at RUN TIME for plugins. Will be available to PATH within neovim terminal
           # this includes LSPs
           lspsAndRuntimeDeps = {
-            general =
-              with pkgs;
-              [
-                (callPackage ./pkgs/astro-language-server.nix { })
-                statix
-                bash-language-server
-                biome
-                clang-tools
-                docker-language-server
-                fish-lsp
-                gleam
-                jdt-language-server
-                lua-language-server
-                markdownlint-cli2
-                marksman
-                nixd
-                nixfmt
-                ocamlPackages.ocaml-lsp
-                ocamlPackages.ocamlformat
-                prettierd
-                ruff
-                stylua
-                svelte-language-server
-                tailwindcss-language-server
-                taplo
-                texlab
-                tinymist
-                ty
-                vscode-langservers-extracted
-                vtsls
-                yaml-language-server
-                dune
-                rust-analyzer
-              ]
-              ++ [
-                mermaid-cli # for snacks.image
-              ];
+            general = with pkgs; [
+              (callPackage ./pkgs/astro-language-server.nix { })
+              statix
+              bash-language-server
+              biome
+              clang-tools
+              docker-language-server
+              fish-lsp
+              gleam
+              jdt-language-server
+              lua-language-server
+              markdownlint-cli2
+              marksman
+              nixd
+              nixfmt
+              ocamlPackages.ocaml-lsp
+              ocamlPackages.ocamlformat
+              prettierd
+              ruff
+              stylua
+              svelte-language-server
+              tailwindcss-language-server
+              taplo
+              texlab
+              tinymist
+              ty
+              vscode-langservers-extracted
+              vtsls
+              yaml-language-server
+              dune
+              rust-analyzer
+              mermaid-cli # for snacks.image
+            ];
           };
 
           # This is for plugins that will load at startup without using packadd:
