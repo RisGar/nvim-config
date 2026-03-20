@@ -123,6 +123,7 @@
           startupPlugins = {
             #TODO:nvim-dap nvim-dap-ui nvim-dap-virtual-text
             general = with pkgs.vimPlugins; [
+              comment-nvim
               nvim-highlight-colors
               SchemaStore-nvim
               blink-cmp
