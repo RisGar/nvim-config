@@ -24,7 +24,7 @@ vim.lsp.enable({
 	"nixd",
 	"ocamllsp",
 	"svelte",
-	"tailwind",
+	"tailwindcss",
 	"taplo",
 	"texlab",
 	"tinymist",
