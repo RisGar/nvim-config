@@ -111,6 +111,7 @@
               yaml-language-server
               dune
               rust-analyzer
+              oxlint
               mermaid-cli # for snacks.image
             ];
           };

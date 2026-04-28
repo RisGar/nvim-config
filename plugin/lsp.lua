@@ -32,6 +32,7 @@ vim.lsp.enable({
 	"yamlls",
 	"ruff",
 	"rust_analyzer",
+	"oxlint",
 
 	-- activated through seperate plugin:
 	-- "jdtls",
