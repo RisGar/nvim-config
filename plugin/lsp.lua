@@ -85,10 +85,6 @@ vim.lsp.config("clangd", {
 	},
 })
 
-vim.lsp.config("tailwind", {
-	filetypes = { "astro" },
-})
-
 -- fidget.nvim
 require("fidget").setup({ notification = { window = { winblend = 0 } } })
 

@@ -43,20 +43,6 @@ vim.keymap.set({ "n", "v", "x" }, "<leader>?", function()
 	require("which-key").show({ global = false })
 end, { desc = "Buffer Local Keymaps (which-key)" })
 
--- trouble.nvim
-require("trouble").setup({})
-vim.keymap.set("n", "<leader>xx", "<cmd>Trouble diagnostics toggle<cr>", { desc = "Trouble diagnostics" })
-vim.keymap.set(
-	"n",
-	"<leader>xX",
-	"<cmd>Trouble diagnostics toggle filter.buf=0<cr>",
-	{ desc = "Trouble buffer diagnostics" }
-)
-vim.keymap.set("n", "<leader>cs", "<cmd>Trouble symbols toggle<cr>", { desc = "Trouble symbols" })
-vim.keymap.set("n", "<leader>cS", "<cmd>Trouble lsp toggle<cr>", { desc = "Trouble LSP" })
-vim.keymap.set("n", "<leader>xL", "<cmd>Trouble loclist toggle<cr>", { desc = "Trouble location list" })
-vim.keymap.set("n", "<leader>xQ", "<cmd>Trouble qflist toggle<cr>", { desc = "Trouble quickfix list" })
-
 -- gitsigns.nvim
 require("gitsigns").setup({})
 

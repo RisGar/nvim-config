@@ -149,7 +149,6 @@
               render-markdown-nvim
               snacks-nvim
               todo-comments-nvim
-              trouble-nvim
               ts-comments-nvim
               typst-preview-nvim
               vim-be-good
