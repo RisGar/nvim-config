@@ -20,15 +20,21 @@
           };
 
         in
-        rec {
-          nvim = pkgs.callPackage ./. { };
-          default = nvim;
+        {
+          nvim = pkgs.callPackage ./. {
+            jdks = with pkgs; [
+              jdk17
+              jdk21
+              jdk25
+            ];
+          };
+          default = self.packages.${system}.nvim;
         }
       );
 
       devShells = forEachSystem (system: {
         default = nixpkgs.legacyPackages.${system}.mkShell {
-          packages = [ self.packages.${system}.default ];
+          packages = [ self.packages.${system}.nvim ];
         };
       });
     };

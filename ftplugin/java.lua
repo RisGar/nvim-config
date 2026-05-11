@@ -28,15 +28,15 @@ local config = {
 				runtimes = {
 					{
 						name = "JavaSE-17",
-						path = nixCats.extra("java-17"),
+						path = vim.g.jdks["java-17"],
 					},
 					{
 						name = "JavaSE-21",
-						path = nixCats.extra("java-21"),
+						path = vim.g.jdks["java-21"],
 					},
 					{
 						name = "JavaSE-25",
-						path = nixCats.extra("java-25"),
+						path = vim.g.jdks["java-25"],
 					},
 				},
 			},

@@ -6,6 +6,7 @@
   vimPlugins,
   vimUtils,
   wrapNeovimUnstable,
+  jdks ? [ ],
 }:
 let
   # Local package for astro-language-server
@@ -48,57 +49,54 @@ let
     git
   ];
 
-  plugins =
-    with vimPlugins;
-    [
-      # Startup plugins
-      comment-nvim
-      nvim-highlight-colors
-      SchemaStore-nvim
-      blink-cmp
-      clangd_extensions-nvim
-      colorful-menu-nvim
-      conform-nvim
-      fidget-nvim
-      friendly-snippets
-      gitsigns-nvim
-      lazydev-nvim
-      lualine-nvim
-      luasnip
-      mini-ai
-      mini-surround
-      nvim-autopairs
-      nvim-lint
-      nvim-lspconfig
-      nvim-treesitter.withAllGrammars
-      nvim-treesitter-context
-      nvim-treesitter-textobjects
-      nvim-web-devicons
-      oil-nvim
-      onedarkpro-nvim
-      precognition-nvim
-      rainbow-delimiters-nvim
-      render-markdown-nvim
-      snacks-nvim
-      todo-comments-nvim
-      ts-comments-nvim
-      typst-preview-nvim
-      vim-be-good
-      vim-dadbod
-      vim-dadbod-completion
-      vim-dadbod-ui
-      vim-wakatime
-      which-key-nvim
-      telescope-nvim
-      nvim-jdtls
-      vimtex
-    ]
-    ++ [
-      # Local config as a plugin
-      neovim-config
-    ];
+  plugins = with vimPlugins; [
+    # Startup plugins
+    comment-nvim
+    nvim-highlight-colors
+    SchemaStore-nvim
+    blink-cmp
+    clangd_extensions-nvim
+    colorful-menu-nvim
+    conform-nvim
+    fidget-nvim
+    friendly-snippets
+    gitsigns-nvim
+    lazydev-nvim
+    lualine-nvim
+    luasnip
+    mini-ai
+    mini-surround
+    nvim-autopairs
+    nvim-lint
+    nvim-lspconfig
+    nvim-treesitter.withAllGrammars
+    nvim-treesitter-context
+    nvim-treesitter-textobjects
+    nvim-web-devicons
+    oil-nvim
+    onedarkpro-nvim
+    precognition-nvim
+    rainbow-delimiters-nvim
+    render-markdown-nvim
+    snacks-nvim
+    todo-comments-nvim
+    ts-comments-nvim
+    typst-preview-nvim
+    vim-be-good
+    vim-dadbod
+    vim-dadbod-completion
+    vim-dadbod-ui
+    vim-wakatime
+    which-key-nvim
+    telescope-nvim
+    nvim-jdtls
+    vimtex
 
-  # Local config plugin (contains lua/, plugin/, ftplugin/, spell/)
+    # Local config as a plugin
+    neovim-config
+  ];
+
+  # Local config plugin
   neovim-config = vimUtils.buildVimPlugin {
     name = "neovim-config";
     src = ./.;
@@ -111,9 +109,15 @@ let
     svelte-ts-plugin = "${pkgs.svelte-language-server}/lib/node_modules/svelte-language-server/packages/typescript-plugin";
   };
 
+  # JDK paths for jdtls
+  jdkPaths = lib.listToAttrs (
+    map (jdk: lib.nameValuePair "java-${lib.versions.major jdk.version}" "${jdk.outPath}") jdks
+  );
+
   luaRcContent = ''
     vim.g.astro_ts_plugin_path = "${extraPaths.astro-ts-plugin}"
     vim.g.svelte_ts_plugin_path = "${extraPaths.svelte-ts-plugin}"
+    vim.g.jdks = vim.json.decode('${builtins.toJSON jdkPaths}')
     ${lib.readFile ./init.lua}
   '';
 
