@@ -65,12 +65,12 @@ vim.lsp.config("vtsls", {
 				globalPlugins = {
 					{
 						name = "@astrojs/ts-plugin",
-						location = nixCats.extra("astro-ts-plugin"),
+						location = vim.g.astro_ts_plugin_path,
 						enableForWorkspaceTypeScriptVersions = true,
 					},
 					{
 						name = "typescript-plugin",
-						location = nixCats.extra("svelte-ts-plugin"),
+						location = vim.g.svelte_ts_plugin_path,
 						enableForWorkspaceTypeScriptVersions = true,
 					},
 				},
