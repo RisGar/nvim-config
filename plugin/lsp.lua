@@ -4,6 +4,20 @@ end
 
 vim.lsp.inlay_hint.enable(true, nil)
 vim.diagnostic.config({ virtual_text = true })
+
+vim.keymap.set("n", "<leader>cd", vim.diagnostic.open_float, { desc = "line diagnostics" })
+
+vim.api.nvim_create_autocmd("LspAttach", {
+	group = vim.api.nvim_create_augroup("UserLspConfig", {}),
+	callback = function(ev)
+		vim.keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, { buffer = ev.buf, desc = "code action" })
+		vim.keymap.set({ "n", "v" }, "<leader>cc", vim.lsp.codelens.run, { buffer = ev.buf, desc = "run codelens" })
+		vim.keymap.set("n", "<leader>cC", vim.lsp.codelens.refresh, { buffer = ev.buf, desc = "refresh codelens" })
+		vim.keymap.set("n", "<leader>cr", vim.lsp.buf.rename, { buffer = ev.buf, desc = "rename" })
+		vim.keymap.set("n", "<leader>cw", vim.lsp.buf.rename, { buffer = ev.buf, desc = "write" })
+	end,
+})
+
 -- TODO: lsp foldexprs vs ts foldexprs
 
 vim.lsp.enable({
