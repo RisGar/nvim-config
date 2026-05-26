@@ -33,6 +33,7 @@ vim.lsp.enable({
 	"ruff",
 	"rust_analyzer",
 	"oxlint",
+	"statix",
 
 	-- activated through seperate plugin:
 	-- "jdtls",
@@ -50,16 +51,6 @@ vim.lsp.config("vtsls", {
 		"typescript.tsx",
 	},
 	settings = {
-		typescript = {
-			inlayHints = {
-				parameterNames = { enabled = "all" },
-				parameterTypes = { enabled = true },
-				variableTypes = { enabled = true },
-				propertyDeclarationTypes = { enabled = true },
-				functionLikeReturnTypes = { enabled = true },
-				enumMemberValues = { enabled = true },
-			},
-		},
 		vtsls = {
 			tsserver = {
 				globalPlugins = {
@@ -75,6 +66,14 @@ vim.lsp.config("vtsls", {
 					},
 				},
 			},
+		},
+	},
+})
+
+vim.lsp.config("astro", {
+	init_options = {
+		typescript = {
+			tsdk = vim.g.typescript_sdk_path,
 		},
 	},
 })
