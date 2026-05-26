@@ -16,7 +16,6 @@ vim.api.nvim_create_autocmd("LspAttach", {
 
 vim.lsp.enable({
 	"astro",
-	"ty",
 	"bashls",
 	"clangd",
 	"cssls",
@@ -31,20 +30,21 @@ vim.lsp.enable({
 	"marksman",
 	"nixd",
 	"ocamllsp",
+	"oxlint",
+	"ruff",
+	"statix",
 	"svelte",
 	"tailwindcss",
 	"taplo",
 	"texlab",
 	"tinymist",
-	"vtsls",
+	"ty",
+	"vtsls", -- TODO: vs https://github.com/pmizio/typescript-tools.nvim
 	"yamlls",
-	"ruff",
-	"rust_analyzer",
-	"oxlint",
-	"statix",
 
 	-- activated through seperate plugin:
 	-- "jdtls",
+	-- "rust_analyzer",
 })
 
 -- ocaml config in ../../lsp/ocamllsp.lua
