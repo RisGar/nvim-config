@@ -51,6 +51,7 @@ let
 
   plugins = with vimPlugins; [
     # Startup plugins
+    comment-nvim
     nvim-highlight-colors
     SchemaStore-nvim
     blink-cmp

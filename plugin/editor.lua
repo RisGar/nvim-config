@@ -56,3 +56,7 @@ require("nvim-highlight-colors").setup({
 	render = "virtual",
 	enable_tailwind = true,
 })
+
+require("Comment").setup({})
+local ft = require("Comment.ft")
+ft.astro = { "<!--%s-->", "<!--%s-->" }
