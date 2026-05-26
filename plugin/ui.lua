@@ -1,7 +1,3 @@
-if vim.g.vscode then
-	return {}
-end
-
 -- One Dark Pro
 require("onedarkpro").setup({
 	options = {

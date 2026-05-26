@@ -1,8 +1,3 @@
-
-if vim.g.vscode then
-	return {}
-end
-
 -- mini.ai
 local ai = require("mini.ai")
 ai.setup({

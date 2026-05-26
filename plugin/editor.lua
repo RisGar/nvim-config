@@ -1,7 +1,3 @@
-if vim.g.vscode then
-	return {}
-end
-
 -- nvim-treesitter
 vim.api.nvim_create_autocmd("FileType", {
 	group = vim.api.nvim_create_augroup("nvim_treesitter", { clear = true }),

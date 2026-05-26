@@ -1,13 +1,9 @@
---- vim.g ---
-
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
 
 vim.g.have_nerd_font = true
 
 vim.g.snacks_animate = false
-
---- vim.opt ---
 
 vim.opt.title = true
 
