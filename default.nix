@@ -48,6 +48,8 @@ let
 
   plugins = with vimPlugins; [
     # Startup plugins
+    rustaceanvim
+    crates-nvim
     blink-cmp
     clangd_extensions-nvim
     colorful-menu-nvim
