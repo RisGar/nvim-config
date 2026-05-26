@@ -1,5 +1,4 @@
 {
-  callPackage,
   lib,
   neovim-unwrapped,
   pkgs,
@@ -9,12 +8,10 @@
   jdks ? [ ],
 }:
 let
-  # Local package for astro-language-server
-  astro-ls = callPackage ./pkgs/astro-language-server.nix { };
 
   # Runtime dependencies that will be added to PATH
   extraPackages = with pkgs; [
-    astro-ls
+    astro-language-server
     statix
     bash-language-server
     biome
@@ -103,7 +100,7 @@ let
 
   # Extra paths for plugins
   extraPaths = {
-    astro-ts-plugin = "${astro-ls}/lib/node_modules/astro-language-server/packages/language-tools/ts-plugin";
+    astro-ts-plugin = "${pkgs.astro-language-server}/lib/node_modules/astro-language-server/packages/language-tools/ts-plugin";
     svelte-ts-plugin = "${pkgs.svelte-language-server}/lib/node_modules/svelte-language-server/packages/typescript-plugin";
     typescript-sdk = "${pkgs.typescript}/lib/node_modules/typescript/lib";
   };
