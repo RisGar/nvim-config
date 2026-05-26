@@ -88,3 +88,7 @@ vim.lsp.config("clangd", {
 require("fidget").setup({ notification = { window = { winblend = 0 } } })
 
 -- TODO: blink.cmp capabilities?
+--
+
+-- Codelens
+vim.lsp.codelens.enable(true)
