@@ -146,15 +146,15 @@ end
 
 -- Cache to avoid redefining highlight groups on every render
 local icon_hl_cache = {}
+local has_devicons, devicons = pcall(require, "nvim-web-devicons")
 
 local function get_file_type_icon()
   local filename = vim.fn.expand("%:t")
   local extension = vim.fn.expand("%:e")
-  local ok, devicons = pcall(require, "nvim-web-devicons")
 
   local icon = ""
   local icon_color = ""
-  if ok then
+  if has_devicons then
     icon, icon_color = devicons.get_icon_color(filename, extension, { default = true })
     if icon and icon_color then
       local hl_group = "StatusLineIcon_" .. extension
