@@ -1,7 +1,6 @@
 require("options")
-
-if vim.g.vscode then
-	return {}
-end
-
 require("keymaps")
+
+vim.cmd.packadd("nvim.difftool")
+vim.cmd.packadd("nvim.tohtml")
+vim.cmd.packadd("nvim.undotree")

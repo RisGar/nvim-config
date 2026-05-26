@@ -48,29 +48,34 @@ let
 
   plugins = with vimPlugins; [
     # Startup plugins
-    comment-nvim
-    nvim-highlight-colors
-    SchemaStore-nvim
+    rustaceanvim
+    crates-nvim
     blink-cmp
     colorful-menu-nvim
+    comment-nvim
     conform-nvim
+    fidget-nvim
     friendly-snippets
     gitsigns-nvim
+    lualine-nvim
     luasnip
     mini-ai
     mini-surround
     nvim-autopairs
+    nvim-highlight-colors
     nvim-lint
     nvim-lspconfig
-    nvim-treesitter.withAllGrammars
     nvim-treesitter-context
     nvim-treesitter-textobjects
+    nvim-treesitter.withAllGrammars
     nvim-web-devicons
     oil-nvim
     onedarkpro-nvim
     precognition-nvim
     rainbow-delimiters-nvim
+    SchemaStore-nvim
     snacks-nvim
+    telescope-nvim
     todo-comments-nvim
     ts-comments-nvim
     vim-be-good
@@ -79,7 +84,6 @@ let
     vim-dadbod-ui
     vim-wakatime
     which-key-nvim
-    telescope-nvim
 
     # Optional plugins
     { plugin = nvim-jdtls; optional = true; }
