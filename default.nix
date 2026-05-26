@@ -51,18 +51,15 @@ let
 
   plugins = with vimPlugins; [
     # Startup plugins
-    comment-nvim
     nvim-highlight-colors
     SchemaStore-nvim
     blink-cmp
     clangd_extensions-nvim
     colorful-menu-nvim
     conform-nvim
-    fidget-nvim
     friendly-snippets
     gitsigns-nvim
     lazydev-nvim
-    lualine-nvim
     luasnip
     mini-ai
     mini-surround
