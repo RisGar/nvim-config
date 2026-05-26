@@ -52,12 +52,10 @@ let
     nvim-highlight-colors
     SchemaStore-nvim
     blink-cmp
-    clangd_extensions-nvim
     colorful-menu-nvim
     conform-nvim
     friendly-snippets
     gitsigns-nvim
-    lazydev-nvim
     luasnip
     mini-ai
     mini-surround
@@ -72,11 +70,9 @@ let
     onedarkpro-nvim
     precognition-nvim
     rainbow-delimiters-nvim
-    render-markdown-nvim
     snacks-nvim
     todo-comments-nvim
     ts-comments-nvim
-    typst-preview-nvim
     vim-be-good
     vim-dadbod
     vim-dadbod-completion
@@ -84,8 +80,14 @@ let
     vim-wakatime
     which-key-nvim
     telescope-nvim
-    nvim-jdtls
-    vimtex
+
+    # Optional plugins
+    { plugin = nvim-jdtls; optional = true; }
+    { plugin = vimtex; optional = true; }
+    { plugin = lazydev-nvim; optional = true; }
+    { plugin = typst-preview-nvim; optional = true; }
+    { plugin = render-markdown-nvim; optional = true; }
+    { plugin = clangd_extensions-nvim; optional = true; }
 
     # Local config as a plugin
     neovim-config
