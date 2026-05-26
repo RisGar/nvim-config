@@ -39,6 +39,9 @@ local modes = {
   ["t"]  = { "TERMINAL", "Normal" },
 }
 
+-- Cache to avoid redefining icon highlight groups on every render
+local icon_hl_cache = {}
+
 local function setup_highlights()
   -- Helper to get hex color from highlight group
   local function get_hl_color(hl_group, attr)
@@ -98,7 +101,10 @@ end
 local statusline_highlights_augroup = vim.api.nvim_create_augroup("StatusLineHighlights", { clear = true })
 vim.api.nvim_create_autocmd("ColorScheme", {
   group = statusline_highlights_augroup,
-  callback = setup_highlights,
+  callback = function()
+    icon_hl_cache = {}
+    setup_highlights()
+  end,
 })
 
 -- Initialize highlights
@@ -144,8 +150,6 @@ local function get_file_info()
   return string.format(" %%#StatusLineFile#%s%s%s ", filename, modified, readonly)
 end
 
--- Cache to avoid redefining highlight groups on every render
-local icon_hl_cache = {}
 local has_devicons, devicons = pcall(require, "nvim-web-devicons")
 
 local function get_file_type_icon()
