@@ -7,13 +7,6 @@ vim.keymap.set("n", "<Up>", "<Nop>")
 
 vim.keymap.set("t", "<Esc><Esc>", "<C-\\><C-n>", { desc = "exit terminal mode" }) -- exit terminal mode
 
--- TODO: move
-vim.keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, { desc = "code action" })
-vim.keymap.set({ "n", "v" }, "<leader>cc", vim.lsp.codelens.run, { desc = "run codelens" })
-vim.keymap.set("n", "<leader>cd", vim.diagnostic.open_float, { desc = "line diagnostics" })
-vim.keymap.set("n", "<leader>cr", vim.lsp.buf.rename, { desc = "rename" })
-vim.keymap.set("n", "<leader>cw", vim.lsp.buf.rename, { desc = "write" })
-
 -- TODO: switch from buffers to native windows
 vim.keymap.set({ "n", "v", "i" }, "<C-h>", "<cmd>bprevious<cr>", { desc = "previous buffer", remap = true })
 vim.keymap.set({ "n", "v", "i" }, "<C-l>", "<cmd>bnext<cr>", { desc = "next buffer", remap = true })
