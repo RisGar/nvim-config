@@ -103,10 +103,11 @@ let
     doCheck = false;
   };
 
-  # Extra paths for plugins (formerly nixCats.extra)
+  # Extra paths for plugins
   extraPaths = {
     astro-ts-plugin = "${astro-ls}/lib/node_modules/astro-language-server/packages/language-tools/ts-plugin";
     svelte-ts-plugin = "${pkgs.svelte-language-server}/lib/node_modules/svelte-language-server/packages/typescript-plugin";
+    typescript-sdk = "${pkgs.typescript}/lib/node_modules/typescript/lib";
   };
 
   # JDK paths for jdtls
@@ -117,6 +118,7 @@ let
   luaRcContent = ''
     vim.g.astro_ts_plugin_path = "${extraPaths.astro-ts-plugin}"
     vim.g.svelte_ts_plugin_path = "${extraPaths.svelte-ts-plugin}"
+    vim.g.typescript_sdk_path = "${extraPaths.typescript-sdk}"
     vim.g.jdks = vim.json.decode('${builtins.toJSON jdkPaths}')
     ${lib.readFile ./init.lua}
   '';
