@@ -7,7 +7,7 @@ vim.keymap.set("n", "<Up>", "<Nop>")
 
 vim.keymap.set("t", "<Esc><Esc>", "<C-\\><C-n>", { desc = "exit terminal mode" }) -- exit terminal mode
 
--- vim.keymap.set("n", "<leader>qq", "<cmd>qall<cr>", { desc = "quit all" })
+-- TODO: switch from buffers to native windows
 vim.keymap.set({ "n", "v", "i" }, "<C-h>", "<cmd>bprevious<cr>", { desc = "previous buffer", remap = true })
 vim.keymap.set({ "n", "v", "i" }, "<C-l>", "<cmd>bnext<cr>", { desc = "next buffer", remap = true })
 
@@ -36,14 +36,6 @@ vim.api.nvim_create_autocmd("FileType", {
 		vim.opt_local.spell = true
 	end,
 })
-
--- vim.api.nvim_create_autocmd({ "BufEnter", "CursorHold", "InsertLeave" }, {
---   desc = "refresh codelens for current buffer",
---   buffer = 0,
---   callback = function()
---     vim.lsp.codelens.refresh({ bufnr = 0 })
---   end,
--- })
 
 vim.api.nvim_create_autocmd({ "InsertLeavePre", "TextChanged", "TextChangedP" }, {
 	pattern = "*",
