@@ -1,20 +1,23 @@
-vim.cmd.packadd("render-markdown-nvim")
-require("render-markdown").setup({
-	preset = "obsidian",
-	completions = { blink = { enabled = true } },
-	code = {
-		sign = false,
-	},
-	heading = {
-		position = "inline",
-	},
-	html = {
-		comment = {
-			conceal = false,
+if not vim.g.render_markdown_setup_done then
+	vim.g.render_markdown_setup_done = true
+	vim.cmd.packadd("render-markdown-nvim")
+	require("render-markdown").setup({
+		preset = "obsidian",
+		completions = { blink = { enabled = true } },
+		code = {
+			sign = false,
 		},
-	},
-	latex = {
-		enabled = false,
-	},
-	file_types = { "markdown" },
-})
+		heading = {
+			position = "inline",
+		},
+		html = {
+			comment = {
+				conceal = false,
+			},
+		},
+		latex = {
+			enabled = false,
+		},
+		file_types = { "markdown" },
+	})
+end
