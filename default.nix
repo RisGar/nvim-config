@@ -75,7 +75,6 @@ let
     rainbow-delimiters-nvim
     SchemaStore-nvim
     snacks-nvim
-    telescope-nvim
     todo-comments-nvim
     ts-comments-nvim
     vim-be-good
@@ -86,12 +85,30 @@ let
     which-key-nvim
 
     # Optional plugins
-    { plugin = nvim-jdtls; optional = true; }
-    { plugin = vimtex; optional = true; }
-    { plugin = lazydev-nvim; optional = true; }
-    { plugin = typst-preview-nvim; optional = true; }
-    { plugin = render-markdown-nvim; optional = true; }
-    { plugin = clangd_extensions-nvim; optional = true; }
+    {
+      plugin = nvim-jdtls;
+      optional = true;
+    }
+    {
+      plugin = vimtex;
+      optional = true;
+    }
+    {
+      plugin = lazydev-nvim;
+      optional = true;
+    }
+    {
+      plugin = typst-preview-nvim;
+      optional = true;
+    }
+    {
+      plugin = render-markdown-nvim;
+      optional = true;
+    }
+    {
+      plugin = clangd_extensions-nvim;
+      optional = true;
+    }
 
     # Local config as a plugin
     neovim-config
