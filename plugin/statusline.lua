@@ -95,9 +95,9 @@ local function setup_highlights()
 end
 
 -- Refresh highlights when colorscheme changes
-vim.api.nvim_create_augroup("StatusLineHighlights", { clear = true })
+local statusline_highlights_augroup = vim.api.nvim_create_augroup("StatusLineHighlights", { clear = true })
 vim.api.nvim_create_autocmd("ColorScheme", {
-  group = "StatusLineHighlights",
+  group = statusline_highlights_augroup,
   callback = setup_highlights,
 })
 
