@@ -1,7 +1,3 @@
-if vim.g.vscode then
-	return {}
-end
-
 vim.lsp.inlay_hint.enable(true, nil)
 vim.diagnostic.config({ virtual_text = true })
 
@@ -12,7 +8,6 @@ vim.api.nvim_create_autocmd("LspAttach", {
 	callback = function(ev)
 		vim.keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, { buffer = ev.buf, desc = "code action" })
 		vim.keymap.set({ "n", "v" }, "<leader>cc", vim.lsp.codelens.run, { buffer = ev.buf, desc = "run codelens" })
-		vim.keymap.set("n", "<leader>cC", vim.lsp.codelens.refresh, { buffer = ev.buf, desc = "refresh codelens" })
 		vim.keymap.set("n", "<leader>cr", vim.lsp.buf.rename, { buffer = ev.buf, desc = "rename" })
 	end,
 })

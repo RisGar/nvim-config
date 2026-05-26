@@ -1,7 +1,3 @@
-if vim.g.vscode then
-	return {}
-end
-
 -- snacks.nvim
 require("snacks").setup({
 	bigfile = { enabled = true },

@@ -1,7 +1,3 @@
-if vim.g.vscode then
-	return {}
-end
-
 -- conform.nvim
 vim.o.formatexpr = "v:lua.require'conform'.formatexpr()"
 

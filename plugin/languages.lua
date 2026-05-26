@@ -1,7 +1,3 @@
-if vim.g.vscode then
-	return {}
-end
-
 -- typst-preview.nvim
 require("typst-preview").setup({})
 

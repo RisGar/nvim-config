@@ -1,7 +1,3 @@
-if vim.g.vscode then
-	return {}
-end
-
 -- blink.cmp
 require("colorful-menu").setup({})
 require("blink.cmp").setup({
