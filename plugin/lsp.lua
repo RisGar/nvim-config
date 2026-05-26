@@ -88,4 +88,4 @@ vim.lsp.config("clangd", {
 -- fidget.nvim
 require("fidget").setup({ notification = { window = { winblend = 0 } } })
 
--- TODO: blink.cmp capabilities?
+vim.lsp.config("*", { capabilities = require("blink.cmp").get_lsp_capabilities() })
