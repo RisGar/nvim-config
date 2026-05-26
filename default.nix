@@ -57,6 +57,7 @@ let
     friendly-snippets
     gitsigns-nvim
     lazydev-nvim
+    lualine-nvim
     luasnip
     mini-ai
     mini-surround

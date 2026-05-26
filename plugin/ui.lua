@@ -14,3 +14,11 @@ require("onedarkpro").setup({
 	},
 })
 vim.cmd.colorscheme("onedark")
+
+-- Lualine
+require("lualine").setup({
+	options = {
+		component_separators = "",
+		section_separators = "",
+	},
+})
