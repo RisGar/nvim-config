@@ -48,13 +48,12 @@ let
 
   plugins = with vimPlugins; [
     # Startup plugins
-    comment-nvim
-    nvim-highlight-colors
-    SchemaStore-nvim
     blink-cmp
     clangd_extensions-nvim
     colorful-menu-nvim
+    comment-nvim
     conform-nvim
+    fidget-nvim
     friendly-snippets
     gitsigns-nvim
     lazydev-nvim
@@ -62,18 +61,22 @@ let
     mini-ai
     mini-surround
     nvim-autopairs
+    nvim-highlight-colors
+    nvim-jdtls
     nvim-lint
     nvim-lspconfig
-    nvim-treesitter.withAllGrammars
     nvim-treesitter-context
     nvim-treesitter-textobjects
+    nvim-treesitter.withAllGrammars
     nvim-web-devicons
     oil-nvim
     onedarkpro-nvim
     precognition-nvim
     rainbow-delimiters-nvim
     render-markdown-nvim
+    SchemaStore-nvim
     snacks-nvim
+    telescope-nvim
     todo-comments-nvim
     ts-comments-nvim
     typst-preview-nvim
@@ -82,10 +85,8 @@ let
     vim-dadbod-completion
     vim-dadbod-ui
     vim-wakatime
-    which-key-nvim
-    telescope-nvim
-    nvim-jdtls
     vimtex
+    which-key-nvim
 
     # Local config as a plugin
     neovim-config
