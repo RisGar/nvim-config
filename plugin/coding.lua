@@ -40,7 +40,7 @@ end, { desc = "Todo" })
 require("nvim-autopairs").setup({})
 
 -- ts-comments.nvim
-require("ts-comments").setup({}) -- TODO: correct require?
+require("ts-comments").setup({})
 
 -- mini.surround
 require("mini.surround").setup({
