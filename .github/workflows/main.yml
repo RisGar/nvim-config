@@ -15,14 +15,16 @@ jobs:
       id-token: write
       contents: read
     steps:
-      - uses: actions/checkout@v6.0.2
+      - uses: actions/checkout@v4
       - name: Check Nix flake inputs
         uses: DeterminateSystems/flake-checker-action@main # This action
       - name: Install Nix
-        uses: DeterminateSystems/determinate-nix-action@v3.21.0
+        uses: DeterminateSystems/determinate-nix-action@v3
       - name: Use Action cache
         uses: DeterminateSystems/magic-nix-cache-action@main
         with:
           diff-store: true
+      - name: Check Nix flake
+        run: nix flake check
       - name: Build default package
         run: nix build
