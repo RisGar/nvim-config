@@ -62,10 +62,17 @@ let
     git
     ripgrep
     fd
+
+    vscode-extensions.vadimcn.vscode-lldb.adapter # For rust debugging
     tree-sitter # For nvim-treesitter
   ];
 
   plugins = with vimPlugins; [
+    # debugging
+    nvim-dap
+    nvim-dap-ui
+    nvim-dap-virtual-text
+
     # Startup plugins
     rustaceanvim
     crates-nvim
@@ -126,6 +133,8 @@ let
     astro-ts-plugin = "${pkgs.astro-language-server}/lib/node_modules/astro-language-server/packages/language-tools/ts-plugin";
     svelte-ts-plugin = "${pkgs.svelte-language-server}/lib/node_modules/svelte-language-server/packages/typescript-plugin";
     typescript-sdk = "${pkgs.typescript}/lib/node_modules/typescript/lib";
+    vscode-cpptools = "${pkgs.vscode-extensions.ms-vscode.cpptools}/share/vcode/extensions/ms-vscode.cpptools/debugAdapters/bin/OpenDebugAD7";
+    vscode-js-debug = "${pkgs.vscode-js-debug}/bin/js-debug";
   };
 
   # JDK paths for jdtls
@@ -138,6 +147,8 @@ let
     vim.g.svelte_ts_plugin_path = "${extraPaths.svelte-ts-plugin}"
     vim.g.typescript_sdk_path = "${extraPaths.typescript-sdk}"
     vim.g.jdks = vim.json.decode('${builtins.toJSON jdkPaths}')
+    vim.g.vscode_cpptools = "${extraPaths.vscode-cpptools}"
+    vim.g.vscode_js_debug = "${extraPaths.vscode-js-debug}"
     ${lib.readFile ./init.lua}
   '';
 
