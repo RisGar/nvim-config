@@ -9,6 +9,13 @@
 }:
 let
 
+  tex = pkgs.texliveMinimal.withPackages (
+    ps: with ps; [
+      latex-bin
+      latexmk
+    ]
+  );
+
   # Runtime dependencies that will be added to PATH
   extraPackages = with pkgs; [
     astro-language-server
@@ -42,6 +49,7 @@ let
     dune
     rust-analyzer
     oxlint
+    tex
     mermaid-cli
     git
   ];
