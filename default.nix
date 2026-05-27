@@ -75,6 +75,7 @@ let
     rainbow-delimiters-nvim
     SchemaStore-nvim
     snacks-nvim
+    telescope-nvim
     todo-comments-nvim
     ts-comments-nvim
     vim-be-good
