@@ -18,6 +18,7 @@ let
 
   # Runtime dependencies that will be added to PATH
   extraPackages = with pkgs; [
+    # LSPs & Formatters
     astro-language-server
     statix
     bash-language-server
@@ -50,8 +51,18 @@ let
     rust-analyzer
     oxlint
     tex
+
+    # Snacks.image
     mermaid-cli
+    tectonic
+    imagemagick
+    ghostscript
+
+    # Snacks.picker
     git
+    ripgrep
+    fd
+    tree-sitter # For nvim-treesitter
   ];
 
   plugins = with vimPlugins; [
