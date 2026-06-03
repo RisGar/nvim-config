@@ -33,6 +33,7 @@ vim.lsp.enable({
 	"ruff",
 	"rust_analyzer",
 	"oxlint",
+	"statix",
 
 	-- activated through seperate plugin:
 	-- "jdtls",
@@ -50,16 +51,6 @@ vim.lsp.config("vtsls", {
 		"typescript.tsx",
 	},
 	settings = {
-		typescript = {
-			inlayHints = {
-				parameterNames = { enabled = "all" },
-				parameterTypes = { enabled = true },
-				variableTypes = { enabled = true },
-				propertyDeclarationTypes = { enabled = true },
-				functionLikeReturnTypes = { enabled = true },
-				enumMemberValues = { enabled = true },
-			},
-		},
 		vtsls = {
 			tsserver = {
 				globalPlugins = {
@@ -79,6 +70,14 @@ vim.lsp.config("vtsls", {
 	},
 })
 
+vim.lsp.config("astro", {
+	init_options = {
+		typescript = {
+			tsdk = vim.g.typescript_sdk_path,
+		},
+	},
+})
+
 vim.lsp.config("clangd", {
 	keys = {
 		{ "<leader>ch", "<cmd>ClangdSwitchSourceHeader<cr>", desc = "switch source/header (c/cpp)" },
@@ -88,4 +87,8 @@ vim.lsp.config("clangd", {
 -- fidget.nvim
 require("fidget").setup({ notification = { window = { winblend = 0 } } })
 
+-- blink.cmp capabilities
 vim.lsp.config("*", { capabilities = require("blink.cmp").get_lsp_capabilities() })
+
+-- Codelens
+vim.lsp.codelens.enable(true)
