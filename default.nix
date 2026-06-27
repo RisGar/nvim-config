@@ -30,7 +30,6 @@ let
     jdt-language-server
     lua-language-server
     markdownlint-cli2
-    marksman
     nixd
     nixfmt
     ocamlPackages.ocaml-lsp

@@ -27,7 +27,6 @@ vim.lsp.enable({
 	"jsonls",
 	"julials",
 	"lua_ls",
-	"marksman",
 	"nixd",
 	"ocamllsp",
 	"oxlint",
