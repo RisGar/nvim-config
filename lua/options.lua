@@ -16,7 +16,7 @@ vim.opt.relativenumber = true
 vim.opt.wrap = false
 vim.opt.breakindent = true
 
-vim.opt.mouse = ""
+vim.opt.mouse = "a"
 vim.opt.mousemodel = "extend"
 
 vim.opt.showmode = false -- already shown in statusline
