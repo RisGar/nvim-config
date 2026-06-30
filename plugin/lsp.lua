@@ -77,20 +77,6 @@ vim.lsp.config("vtsls", {
 	},
 })
 
-vim.lsp.config("astro", {
-	init_options = {
-		typescript = {
-			tsdk = vim.g.typescript_sdk_path,
-		},
-	},
-})
-
-vim.lsp.config("clangd", {
-	keys = {
-		{ "<leader>ch", "<cmd>ClangdSwitchSourceHeader<cr>", desc = "switch source/header (c/cpp)" },
-	},
-})
-
 -- fidget.nvim
 require("fidget").setup({ notification = { window = { winblend = 0 } } })
 

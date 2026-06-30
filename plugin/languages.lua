@@ -62,5 +62,19 @@ require("clangd_extensions").setup({
 	},
 })
 
+vim.lsp.config("astro", {
+	init_options = {
+		typescript = {
+			tsdk = vim.g.typescript_sdk_path,
+		},
+	},
+})
+
+vim.lsp.config("clangd", {
+	keys = {
+		{ "<leader>ch", "<cmd>ClangdSwitchSourceHeader<cr>", desc = "switch source/header (c/cpp)" },
+	},
+})
+
 -- vim-dadbod
 vim.g.db_ui_use_nerd_fonts = 1
