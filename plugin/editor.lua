@@ -56,3 +56,5 @@ require("nvim-highlight-colors").setup({
 require("Comment").setup({})
 local ft = require("Comment.ft")
 ft.astro = { "<!--%s-->", "<!--%s-->" }
+
+require("hunk").setup({})

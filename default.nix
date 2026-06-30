@@ -115,6 +115,7 @@ let
     vim-wakatime
     vimtex
     which-key-nvim
+    hunk-nvim
 
     # Local config as a plugin
     neovim-config
