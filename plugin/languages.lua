@@ -76,5 +76,25 @@ vim.lsp.config("clangd", {
 	},
 })
 
+vim.g.rustaceanvim = {
+	-- LSP configuration
+	server = {
+		default_settings = {
+			-- rust-analyzer language server configuration
+			["rust-analyzer"] = {
+				files = {
+					excludeDirs = {
+						".direnv",
+						".cargo",
+						".git",
+						".jj",
+						"target",
+					},
+				},
+			},
+		},
+	},
+}
+
 -- vim-dadbod
 vim.g.db_ui_use_nerd_fonts = 1
