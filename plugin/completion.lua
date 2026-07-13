@@ -68,8 +68,6 @@ require("blink.cmp").setup({
 		},
 	},
 
-	snippets = { preset = "luasnip" },
-
 	sources = {
 		default = {
 			"lsp",
@@ -105,7 +103,3 @@ require("blink.cmp").setup({
 		completion = { menu = { auto_show = true } },
 	},
 })
-
--- LuaSnip & friendly-snippets
-require("luasnip.loaders.from_vscode").lazy_load()
-require("luasnip.loaders.from_vscode").lazy_load({ paths = { vim.fn.stdpath("config") .. "/snippets" } })

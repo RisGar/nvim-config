@@ -88,7 +88,6 @@ let
     friendly-snippets
     lazydev-nvim
     lualine-nvim
-    luasnip
     mini-ai
     mini-surround
     nvim-autopairs
