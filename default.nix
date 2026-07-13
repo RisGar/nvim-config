@@ -131,6 +131,7 @@ let
     neovim-config
       jjsigns-nvim
   ];
+      mini-indentscope
 
   # Local config plugin
   neovim-config = vimUtils.buildVimPlugin {

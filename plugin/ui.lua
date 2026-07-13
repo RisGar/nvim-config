@@ -5,7 +5,7 @@ require("onedarkpro").setup({
 		cursorline = true,
 	},
 	highlights = {
-		SnacksIndentScope = { fg = "${fg}" },
+		MiniIndentscopeSymbol = { fg = "${fg}" },
 		Cursor = { bg = "#5188FA", fg = "${white}" },
 	},
 	styles = {
@@ -21,4 +21,14 @@ require("lualine").setup({
 		component_separators = "",
 		section_separators = "",
 	},
+})
+
+require("mini.indentscope").setup({
+	draw = {
+		animation = require("mini.indentscope").gen_animation.none(),
+	},
+	options = {
+		try_as_border = true,
+	},
+	symbol = "│",
 })

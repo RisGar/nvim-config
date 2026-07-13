@@ -7,7 +7,6 @@ require("snacks").setup({
 			enabled = false,
 		},
 	},
-	indent = { enabled = true },
 	input = { enabled = true },
 	picker = { enabled = true },
 	rename = { enabled = true },
