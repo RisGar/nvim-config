@@ -79,7 +79,6 @@ require("blink.cmp").setup({
 		},
 
 		per_filetype = {
-			sql = { "snippets", "dadbod", "buffer" },
 			lua = { inherit_defaults = true, "lazydev" },
 			markdown = { inherit_defaults = true, "markdown" },
 		},
@@ -89,10 +88,6 @@ require("blink.cmp").setup({
 				name = "LazyDev",
 				module = "lazydev.integrations.blink",
 				score_offset = 100,
-			},
-			dadbod = {
-				name = "Dadbod",
-				module = "vim_dadbod_completion.blink",
 			},
 			markdown = {
 				name = "RenderMarkdown",

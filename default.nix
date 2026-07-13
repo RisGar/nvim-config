@@ -119,9 +119,6 @@ let
     ts-comments-nvim
     typst-preview-nvim
     vim-be-good
-    vim-dadbod
-    vim-dadbod-completion
-    vim-dadbod-ui
     vim-wakatime
     vimtex
     which-key-nvim
