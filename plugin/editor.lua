@@ -40,13 +40,7 @@ vim.keymap.set({ "n", "v", "x" }, "<leader>?", function()
 end, { desc = "Buffer Local Keymaps (which-key)" })
 
 -- gitsigns.nvim
-require("gitsigns").setup({})
-
---- precognition.nvim
-require("precognition").setup({ startVisible = false })
-vim.keymap.set("n", "<leader>up", function()
-	require("precognition").peek()
-end, { desc = "show motions" })
+-- require("gitsigns").setup({})
 
 require("nvim-highlight-colors").setup({
 	render = "virtual",
@@ -58,3 +52,5 @@ local ft = require("Comment.ft")
 ft.astro = { "<!--%s-->", "<!--%s-->" }
 
 require("hunk").setup({})
+
+require("jjsigns").setup()

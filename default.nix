@@ -9,12 +9,23 @@
 }:
 let
 
+  vimPlugins' = {
   tex = pkgs.texliveMinimal.withPackages (
+    jjsigns-nvim = pkgs.vimUtils.buildVimPlugin {
     ps: with ps; [
+      name = "jjsigns-nvim";
       latex-bin
+      src = pkgs.fetchFromGitHub {
       latexmk
+        owner = "evanphx";
     ]
+        repo = "jjsigns.nvim";
   );
+        rev = "f5f5cefef0945cc00ba914584275f9cef8c2e792";
+        hash = "sha256-nZu61pIkd85nISneMBy82ZZPB7Wj85Uy2LsOoWo99CE=";
+      };
+    };
+  };
 
   # Runtime dependencies that will be added to PATH
   extraPackages = with pkgs; [
@@ -82,7 +93,6 @@ let
     conform-nvim
     fidget-nvim
     friendly-snippets
-    gitsigns-nvim
     lazydev-nvim
     lualine-nvim
     luasnip
@@ -119,6 +129,7 @@ let
 
     # Local config as a plugin
     neovim-config
+      jjsigns-nvim
   ];
 
   # Local config plugin
