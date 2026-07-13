@@ -55,7 +55,7 @@ let
     tinymist
     ty
     vscode-langservers-extracted
-    vtsls
+    typescript-go
     yaml-language-server
     dune
     rust-analyzer

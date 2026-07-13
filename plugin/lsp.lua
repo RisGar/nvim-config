@@ -38,7 +38,7 @@ vim.lsp.enable({
 	"texlab",
 	"tinymist",
 	"ty",
-	"vtsls", -- TODO: vs https://github.com/pmizio/typescript-tools.nvim
+	"tsgo",
 	"yamlls",
 
 	-- activated through seperate plugin:
@@ -48,30 +48,18 @@ vim.lsp.enable({
 
 -- ocaml config in ../../lsp/ocamllsp.lua
 
-vim.lsp.config("vtsls", {
-	filetypes = {
-		"javascript",
-		"javascriptreact",
-		"javascript.jsx",
-		"typescript",
-		"typescriptreact",
-		"typescript.tsx",
-	},
-	settings = {
-		vtsls = {
-			tsserver = {
-				globalPlugins = {
-					{
-						name = "@astrojs/ts-plugin",
-						location = vim.g.astro_ts_plugin_path,
-						enableForWorkspaceTypeScriptVersions = true,
-					},
-					{
-						name = "typescript-plugin",
-						location = vim.g.svelte_ts_plugin_path,
-						enableForWorkspaceTypeScriptVersions = true,
-					},
-				},
+vim.lsp.config("tsgo", {
+	init_options = {
+		plugins = {
+			{
+				name = "@astrojs/ts-plugin",
+				location = vim.g.astro_ts_plugin_path,
+				enableForWorkspaceTypeScriptVersions = true,
+			},
+			{
+				name = "typescript-plugin",
+				location = vim.g.svelte_ts_plugin_path,
+				enableForWorkspaceTypeScriptVersions = true,
 			},
 		},
 	},
