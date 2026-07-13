@@ -61,67 +61,65 @@ let
     imagemagick
     ghostscript
 
-    # Snacks.picker
-    git
-    ripgrep
-    fd
-
     vscode-extensions.vadimcn.vscode-lldb.adapter # For rust debugging
     tree-sitter # For nvim-treesitter
   ];
 
-  plugins = with vimPlugins; [
-    # debugging
-    nvim-dap
-    nvim-dap-ui
-    nvim-dap-virtual-text
+  plugins =
+    with vimPlugins;
+    with vimPlugins';
+    [
+      # debugging
+      nvim-dap
+      nvim-dap-ui # TODO: replace with nvim-dap-view? or do i need this at all?
+      nvim-dap-virtual-text
 
-    # Startup plugins
-    rustaceanvim
-    crates-nvim
-    blink-cmp
-    clangd_extensions-nvim
-    colorful-menu-nvim
-    comment-nvim
-    conform-nvim
-    fidget-nvim
-    friendly-snippets
-    lazydev-nvim
-    lualine-nvim
-    mini-ai
-    mini-surround
-    nvim-autopairs
-    nvim-highlight-colors
-    nvim-jdtls
-    nvim-lint
-    nvim-lspconfig
-    nvim-treesitter-context
-    nvim-treesitter-textobjects
-    nvim-treesitter.withAllGrammars
-    nvim-web-devicons
-    oil-nvim
-    onedarkpro-nvim
-    precognition-nvim
-    rainbow-delimiters-nvim
-    render-markdown-nvim
-    SchemaStore-nvim
-    snacks-nvim
-    telescope-nvim
-    todo-comments-nvim
-    ts-comments-nvim
-    typst-preview-nvim
-    vim-be-good
-    vim-wakatime
-    vimtex
-    which-key-nvim
-    hunk-nvim
+      # langs
+      rustaceanvim
+      crates-nvim
+      clangd_extensions-nvim
+      vimtex
+      lazydev-nvim
+      typst-preview-nvim
+      SchemaStore-nvim
 
-    # Local config as a plugin
-    neovim-config
+      # Startup plugins
       jjsigns-nvim
-  ];
+      blink-cmp
+      colorful-menu-nvim
+      comment-nvim
+      conform-nvim
+      fidget-nvim
+      friendly-snippets
+      lualine-nvim
+      mini-ai
+      mini-surround
       mini-indentscope
+      nvim-autopairs
+      nvim-highlight-colors
+      nvim-jdtls
+      nvim-lint
+      nvim-lspconfig
+      nvim-treesitter-context
+      nvim-treesitter-textobjects
+      nvim-treesitter.withAllGrammars
+      nvim-web-devicons
+      oil-nvim
+      onedarkpro-nvim
+      rainbow-delimiters-nvim
+      render-markdown-nvim
+      snacks-nvim
+      todo-comments-nvim
+      ts-comments-nvim
+      vim-be-good
+      vim-wakatime
+      which-key-nvim
+      hunk-nvim
       tv-nvim # tv already in runtime deps
+
+      # Local config as a plugin
+      neovim-config
+    ];
 
   # Local config plugin
   neovim-config = vimUtils.buildVimPlugin {
