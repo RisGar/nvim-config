@@ -129,6 +129,7 @@ let
       jjsigns-nvim
   ];
       mini-indentscope
+      tv-nvim # tv already in runtime deps
 
   # Local config plugin
   neovim-config = vimUtils.buildVimPlugin {

@@ -27,9 +27,6 @@ ai.setup({
 
 -- todo-comments.nvim
 require("todo-comments").setup({})
-vim.keymap.set("n", "<leader>st", function()
-	Snacks.picker.todo_comments()
-end, { desc = "Todo" })
 
 -- nvim-autopairs
 require("nvim-autopairs").setup({})
