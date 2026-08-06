@@ -18,30 +18,30 @@ vim.keymap.set({ "n", "v", "i" }, "<C-l>", "<cmd>bnext<cr>", { desc = "next buff
 vim.keymap.set("v", "<leader>p", '"_dP', { desc = "paste without yank" })
 
 vim.api.nvim_create_autocmd("TextYankPost", { -- highlight when yanking (copying) text
-	desc = "highlight when yanking text",
-	group = vim.api.nvim_create_augroup("highlight-yank", { clear = true }),
-	callback = function()
-		vim.hl.on_yank()
-	end,
+  desc = "highlight when yanking text",
+  group = vim.api.nvim_create_augroup("highlight-yank", { clear = true }),
+  callback = function()
+    vim.hl.on_yank()
+  end,
 })
 
 vim.api.nvim_create_autocmd("FileType", {
-	desc = "wrap and check for spell in text fts",
-	group = vim.api.nvim_create_augroup("wrap-spell", { clear = true }),
-	pattern = { "text", "tex", "plaintex", "typst", "gitcommit", "markdown" },
-	callback = function()
-		vim.opt_local.wrap = true
-		vim.opt_local.spell = true
-	end,
+  desc = "wrap and check for spell in text fts",
+  group = vim.api.nvim_create_augroup("wrap-spell", { clear = true }),
+  pattern = { "text", "tex", "plaintex", "typst", "gitcommit", "markdown" },
+  callback = function()
+    vim.opt_local.wrap = true
+    vim.opt_local.spell = true
+  end,
 })
 
 vim.api.nvim_create_autocmd({ "InsertLeavePre", "TextChanged", "TextChangedP" }, {
-	pattern = "*",
-	desc = "auto-update buffer if modifiable and not readonly",
-	callback = function()
-		local bufnr = vim.api.nvim_get_current_buf()
-		if vim.bo[bufnr].modifiable and not vim.bo[bufnr].readonly then
-			vim.cmd("silent! update")
-		end
-	end,
+  pattern = "*",
+  desc = "auto-update buffer if modifiable and not readonly",
+  callback = function()
+    local bufnr = vim.api.nvim_get_current_buf()
+    if vim.bo[bufnr].modifiable and not vim.bo[bufnr].readonly then
+      vim.cmd("silent! update")
+    end
+  end,
 })

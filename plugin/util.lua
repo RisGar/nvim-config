@@ -1,15 +1,15 @@
 -- snacks.nvim
 require("snacks").setup({
-	bigfile = { enabled = true },
-	image = {
-		enabled = true,
-		math = {
-			enabled = false,
-		},
-	},
-	rename = { enabled = true },
-	toggle = { enabled = true },
-	words = { enabled = true },
+  bigfile = { enabled = true },
+  image = {
+    enabled = true,
+    math = {
+      enabled = false,
+    },
+  },
+  rename = { enabled = true },
+  toggle = { enabled = true },
+  words = { enabled = true },
 })
 
 Snacks.toggle.inlay_hints():map("<leader>uh")
@@ -17,99 +17,99 @@ Snacks.toggle.diagnostics():map("<leader>ud")
 
 local tsc = require("treesitter-context")
 Snacks.toggle({
-	name = "treesitter context",
-	get = tsc.enabled,
-	set = function(state)
-		if state then
-			tsc.enable()
-		else
-			tsc.disable()
-		end
-	end,
+  name = "treesitter context",
+  get = tsc.enabled,
+  set = function(state)
+    if state then
+      tsc.enable()
+    else
+      tsc.disable()
+    end
+  end,
 }):map("<leader>ut")
 
 -- rename support for oil.nvim
 vim.api.nvim_create_autocmd("User", {
-	pattern = "OilActionsPost",
-	callback = function(event)
-		if event.data.actions.type == "move" then
-			Snacks.rename.on_rename_file(event.data.actions.src_url, event.data.actions.dest_url)
-		end
-	end,
+  pattern = "OilActionsPost",
+  callback = function(event)
+    if event.data.actions.type == "move" then
+      Snacks.rename.on_rename_file(event.data.actions.src_url, event.data.actions.dest_url)
+    end
+  end,
 })
 
 -- Fuzzy Finders
 require("tv").setup({
-	window = {
-		border = "rounded",
-	},
-	channels = {
-		files = {
-			keybinding = "<leader><leader>",
-			args = { "--no-status-bar", "--preview-size", "50" },
-		},
-		text = {
-			keybinding = "<leader>/",
-			args = { "--no-status-bar", "--preview-size", "50" },
-		},
-		["todo-comments"] = {
-			keybinding = "<leader>st",
-			args = { "--no-status-bar", "--preview-size", "50" },
-		},
-	},
-	tv_binary = "tv",
-	quickfix = {
-		auto_open = true,
-	},
-	global_keybindings = {
-		channels = "<leader>tv",
-	},
+  window = {
+    border = "rounded",
+  },
+  channels = {
+    files = {
+      keybinding = "<leader><leader>",
+      args = { "--no-status-bar", "--preview-size", "50" },
+    },
+    text = {
+      keybinding = "<leader>/",
+      args = { "--no-status-bar", "--preview-size", "50" },
+    },
+    ["todo-comments"] = {
+      keybinding = "<leader>st",
+      args = { "--no-status-bar", "--preview-size", "50" },
+    },
+  },
+  tv_binary = "tv",
+  quickfix = {
+    auto_open = true,
+  },
+  global_keybindings = {
+    channels = "<leader>tv",
+  },
 })
 
 local function tv_buffers()
-	local bufs = vim.api.nvim_list_bufs()
-	local buf_names = {}
-	local cwd = vim.fn.getcwd() .. "/"
+  local bufs = vim.api.nvim_list_bufs()
+  local buf_names = {}
+  local cwd = vim.fn.getcwd() .. "/"
 
-	for _, buf in ipairs(bufs) do
-		if vim.api.nvim_buf_is_loaded(buf) and vim.bo[buf].buflisted then
-			local name = vim.api.nvim_buf_get_name(buf)
-			if name ~= "" then
-				local rel_name = name:gsub("^" .. vim.pesc(cwd), "")
-				table.insert(buf_names, rel_name)
-			end
-		end
-	end
+  for _, buf in ipairs(bufs) do
+    if vim.api.nvim_buf_is_loaded(buf) and vim.bo[buf].buflisted then
+      local name = vim.api.nvim_buf_get_name(buf)
+      if name ~= "" then
+        local rel_name = name:gsub("^" .. vim.pesc(cwd), "")
+        table.insert(buf_names, rel_name)
+      end
+    end
+  end
 
-	if #buf_names == 0 then
-		vim.notify("No active buffers.", vim.log.levels.INFO)
-		return
-	end
+  if #buf_names == 0 then
+    vim.notify("No active buffers.", vim.log.levels.INFO)
+    return
+  end
 
-	local escaped_buffers = vim.fn.shellescape(table.concat(buf_names, "\n"))
-	local tv_config = require("tv.config")
-	tv_config.current.channels = tv_config.current.channels or {}
-	tv_config.current.channels.files = tv_config.current.channels.files or {}
+  local escaped_buffers = vim.fn.shellescape(table.concat(buf_names, "\n"))
+  local tv_config = require("tv.config")
+  tv_config.current.channels = tv_config.current.channels or {}
+  tv_config.current.channels.files = tv_config.current.channels.files or {}
 
-	local original_binary = tv_config.current.tv_binary
-	local original_args = tv_config.current.channels.files.args
+  local original_binary = tv_config.current.tv_binary
+  local original_args = tv_config.current.channels.files.args
 
-	tv_config.current.tv_binary = "sh"
-	tv_config.current.channels.files.args = {
-		"-c",
-		"printf '%s\\n' " .. escaped_buffers .. " | " .. (original_binary or "tv") .. ' "$@"',
-		"--",
-		"--preview-command",
-		"bat -n --color=always {}",
-		"--no-status-bar",
-		"--preview-size",
-		"50",
-	}
+  tv_config.current.tv_binary = "sh"
+  tv_config.current.channels.files.args = {
+    "-c",
+    "printf '%s\\n' " .. escaped_buffers .. " | " .. (original_binary or "tv") .. ' "$@"',
+    "--",
+    "--preview-command",
+    "bat -n --color=always {}",
+    "--no-status-bar",
+    "--preview-size",
+    "50",
+  }
 
-	require("tv").tv_channel("files")
+  require("tv").tv_channel("files")
 
-	tv_config.current.tv_binary = original_binary
-	tv_config.current.channels.files.args = original_args
+  tv_config.current.tv_binary = original_binary
+  tv_config.current.channels.files.args = original_args
 end
 
 vim.keymap.set("n", "<leader>.", tv_buffers, { desc = "buffers" })
@@ -203,17 +203,17 @@ vim.keymap.set("n", "<leader>.", tv_buffers, { desc = "buffers" })
 
 -- Words
 vim.keymap.set({ "n", "t" }, "]]", function()
-	Snacks.words.jump(vim.v.count1)
+  Snacks.words.jump(vim.v.count1)
 end, { desc = "Next Reference" })
 vim.keymap.set({ "n", "t" }, "[[", function()
-	Snacks.words.jump(-vim.v.count1)
+  Snacks.words.jump(-vim.v.count1)
 end, { desc = "Prev Reference" })
 
 -- Easily quit tv.nvim windows
 vim.api.nvim_create_autocmd("FileType", {
-	pattern = "tv",
-	callback = function(event)
-		vim.keymap.set("n", "q", "<cmd>close<CR>", { buffer = event.buf, silent = true })
-		vim.keymap.set({ "n", "t" }, "<Esc>", "<cmd>close<CR>", { buffer = event.buf, silent = true })
-	end,
+  pattern = "tv",
+  callback = function(event)
+    vim.keymap.set("n", "q", "<cmd>close<CR>", { buffer = event.buf, silent = true })
+    vim.keymap.set({ "n", "t" }, "<Esc>", "<cmd>close<CR>", { buffer = event.buf, silent = true })
+  end,
 })

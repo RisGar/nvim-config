@@ -1,15 +1,15 @@
 -- nvim-treesitter
 vim.api.nvim_create_autocmd("FileType", {
-	group = vim.api.nvim_create_augroup("nvim_treesitter", { clear = true }),
-	callback = function(ev)
-		if vim.treesitter.get_parser(ev.buf, nil, { error = false }) == nil then
-			return
-		end
+  group = vim.api.nvim_create_augroup("nvim_treesitter", { clear = true }),
+  callback = function(ev)
+    if vim.treesitter.get_parser(ev.buf, nil, { error = false }) == nil then
+      return
+    end
 
-		vim.treesitter.start(ev.buf)
-		vim.wo.foldexpr = "v:lua.vim.treesitter.foldexpr()"
-		vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
-	end,
+    vim.treesitter.start(ev.buf)
+    vim.wo.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+    vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+  end,
 })
 
 -- nvim-treesitter-context
@@ -18,33 +18,33 @@ require("treesitter-context").setup({ max_lines = 3 })
 -- which-key.nvim
 local wk = require("which-key")
 wk.setup({
-	preset = "helix",
+  preset = "helix",
 })
 wk.add({
-	{ "<leader>a", group = "ai", icon = { icon = " ", color = "orange" } },
-	{ "<leader>c", group = "code" },
-	{ "<leader>f", group = "find" },
-	{ "<leader>g", group = "git" },
-	{ "<leader>p", group = "plugins", icon = { icon = " ", color = "cyan" } },
-	{ "<leader>s", group = "search" },
-	{ "<leader>u", group = "ui" },
-	{ "<leader>x", group = "diagnostics", icon = { icon = "󱖫 ", color = "green" } },
-	{ "g", group = "goto" },
-	{ "[", group = "prev" },
-	{ "]", group = "next" },
-	{ "gs", group = "surround" },
-	{ "z", group = "fold" },
+  { "<leader>a", group = "ai", icon = { icon = " ", color = "orange" } },
+  { "<leader>c", group = "code" },
+  { "<leader>f", group = "find" },
+  { "<leader>g", group = "git" },
+  { "<leader>p", group = "plugins", icon = { icon = " ", color = "cyan" } },
+  { "<leader>s", group = "search" },
+  { "<leader>u", group = "ui" },
+  { "<leader>x", group = "diagnostics", icon = { icon = "󱖫 ", color = "green" } },
+  { "g", group = "goto" },
+  { "[", group = "prev" },
+  { "]", group = "next" },
+  { "gs", group = "surround" },
+  { "z", group = "fold" },
 })
 vim.keymap.set({ "n", "v", "x" }, "<leader>?", function()
-	require("which-key").show({ global = false })
+  require("which-key").show({ global = false })
 end, { desc = "Buffer Local Keymaps (which-key)" })
 
 -- gitsigns.nvim
 -- require("gitsigns").setup({})
 
 require("nvim-highlight-colors").setup({
-	render = "virtual",
-	enable_tailwind = true,
+  render = "virtual",
+  enable_tailwind = true,
 })
 
 require("Comment").setup({})
