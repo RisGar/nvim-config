@@ -46,8 +46,6 @@ vim.lsp.enable({
   -- "rust_analyzer",
 })
 
--- ocaml config in ../../lsp/ocamllsp.lua
-
 vim.lsp.config("tsgo", {
   init_options = {
     plugins = {
