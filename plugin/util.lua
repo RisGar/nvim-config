@@ -1,23 +1,15 @@
--- snacks.nvim
-require("snacks").setup({
-  toggle = { enabled = true },
-})
+-- Inlay Hints & Diagnostics
+vim.keymap.set("n", "<leader>uh", function()
+  vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
+end, { desc = "toggle inlay hints" })
 
-Snacks.toggle.inlay_hints():map("<leader>uh")
-Snacks.toggle.diagnostics():map("<leader>ud")
+vim.keymap.set("n", "<leader>ud", function()
+  vim.diagnostic.enable(not vim.diagnostic.is_enabled())
+end, { desc = "toggle diagnostics" })
 
-local tsc = require("treesitter-context")
-Snacks.toggle({
-  name = "treesitter context",
-  get = tsc.enabled,
-  set = function(state)
-    if state then
-      tsc.enable()
-    else
-      tsc.disable()
-    end
-  end,
-}):map("<leader>ut")
+vim.keymap.set("n", "<leader>ut", function()
+  require("treesitter-context").toggle()
+end, { desc = "toggle treesitter context" })
 
 -- Fuzzy Finders
 require("tv").setup({
