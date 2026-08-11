@@ -1,15 +1,6 @@
 -- snacks.nvim
 require("snacks").setup({
-  bigfile = { enabled = true },
-  image = {
-    enabled = true,
-    math = {
-      enabled = false,
-    },
-  },
-  rename = { enabled = true },
   toggle = { enabled = true },
-  words = { enabled = true },
 })
 
 Snacks.toggle.inlay_hints():map("<leader>uh")
@@ -27,16 +18,6 @@ Snacks.toggle({
     end
   end,
 }):map("<leader>ut")
-
--- rename support for oil.nvim
-vim.api.nvim_create_autocmd("User", {
-  pattern = "OilActionsPost",
-  callback = function(event)
-    if event.data.actions.type == "move" then
-      Snacks.rename.on_rename_file(event.data.actions.src_url, event.data.actions.dest_url)
-    end
-  end,
-})
 
 -- Fuzzy Finders
 require("tv").setup({

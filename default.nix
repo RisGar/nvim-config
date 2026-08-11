@@ -105,6 +105,7 @@ let
       nvim-treesitter.withAllGrammars
       nvim-web-devicons
       oil-nvim
+      yazi-nvim
       onedarkpro-nvim
       rainbow-delimiters-nvim
       render-markdown-nvim
