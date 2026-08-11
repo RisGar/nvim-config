@@ -55,12 +55,6 @@ let
     oxlint
     texliveFull
 
-    # Snacks.image
-    mermaid-cli
-    tectonic
-    imagemagick
-    ghostscript
-
     vscode-extensions.vadimcn.vscode-lldb.adapter # For rust debugging
     tree-sitter # For nvim-treesitter
   ];
@@ -109,7 +103,6 @@ let
       onedarkpro-nvim
       rainbow-delimiters-nvim
       render-markdown-nvim
-      snacks-nvim
       todo-comments-nvim
       ts-comments-nvim
       vim-be-good
