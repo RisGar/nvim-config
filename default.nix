@@ -82,6 +82,7 @@ let
       lazydev-nvim
       typst-preview-nvim
       SchemaStore-nvim
+      ocaml-nvim
 
       # Startup plugins
       jjsigns-nvim
@@ -104,7 +105,6 @@ let
       nvim-treesitter-textobjects
       nvim-treesitter.withAllGrammars
       nvim-web-devicons
-      oil-nvim
       yazi-nvim
       onedarkpro-nvim
       rainbow-delimiters-nvim

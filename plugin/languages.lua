@@ -95,3 +95,6 @@ vim.g.rustaceanvim = {
     },
   },
 }
+
+require("ocaml").setup()
+-- TODO: keybinds
