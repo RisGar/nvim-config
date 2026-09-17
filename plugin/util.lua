@@ -25,6 +25,7 @@ vim.keymap.set("n", "<leader>f", fzf.files, { desc = "file" })
 vim.keymap.set("n", "<leader>.", fzf.tabs, { desc = "tabs" })
 vim.keymap.set("n", "<leader>/", fzf.live_grep_native, { desc = "file" })
 vim.keymap.set("n", "<leader>:", fzf.command_history, { desc = "command history" })
+vim.keymap.set("n", "<leader>t", require("todo-comments.fzf").todo, { desc = "todos" })
 
 -- Alls
 
