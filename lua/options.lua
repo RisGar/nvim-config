@@ -33,7 +33,7 @@ vim.opt.hlsearch = false -- don't highlight previous searches
 vim.opt.inccommand = "split" -- preview substitutions live
 
 vim.opt.updatetime = 200
-vim.opt.timeoutlen = vim.g.vscode and 1000 or 300
+vim.opt.timeoutlen = 300
 
 vim.opt.expandtab = true
 vim.opt.tabstop = 2
@@ -66,7 +66,7 @@ vim.opt.termguicolors = true
 vim.opt.splitright = true
 vim.opt.splitbelow = true
 
-vim.o.list = true
+vim.opt.list = true
 vim.opt.listchars = { tab = "» ", trail = "·", nbsp = "␣" }
 
 vim.opt.guicursor =
@@ -79,4 +79,4 @@ vim.opt.cmdheight = 0
 vim.opt.spelllang = { "en_gb", "de_de" }
 vim.opt.spell = false
 
-vim.o.showtabline = 2 -- always show tabs
+vim.opt.showtabline = 2 -- always show tabs

@@ -46,6 +46,9 @@ vim.api.nvim_create_autocmd("WinClosed", {
   group = tab_per_buffer,
   callback = function(args)
     local win = tonumber(args.match)
+    if win == nil then
+      return
+    end
     fresh_win[win], prev_buf[win], prev_view[win] = nil, nil, nil
   end,
 })
@@ -131,8 +134,8 @@ vim.api.nvim_create_autocmd({ "InsertLeavePre", "TextChanged", "TextChangedP" },
   pattern = "*",
   desc = "auto-update buffer if modifiable and not readonly",
   callback = function()
-    local bufnr = vim.api.nvim_get_current_buf()
-    if vim.bo[bufnr].modifiable and not vim.bo[bufnr].readonly then
+    local buf = vim.api.nvim_get_current_buf()
+    if vim.bo[buf].modifiable and not vim.bo[buf].readonly then
       vim.cmd("silent! update")
     end
   end,
