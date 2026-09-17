@@ -14,7 +14,6 @@ end, { desc = "toggle treesitter context" })
 -- Picker
 
 local fzf = require("fzf-lua")
-fzf.setup({ "fzf-tmux" })
 fzf.register_ui_select()
 
 -- Quick Keybinds
