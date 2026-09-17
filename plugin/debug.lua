@@ -45,7 +45,10 @@ dap.configurations.java = {
     -- classPaths = {},
     -- modulePaths = {},
     -- javaExec = "/path/to/your/bin/java",
-    console = "integratedTerminal",
+    -- Output (stdout/stderr) goes to dapui's REPL pane because the program
+    -- runs in java-debug's internal console. Switch to "integratedTerminal"
+    -- if the program reads from stdin.
+    console = "internalConsole",
   },
   {
     type = "java",
@@ -96,12 +99,10 @@ end
 dap.listeners.before.launch.dapui_config = function()
   dapui.open()
 end
-dap.listeners.before.event_terminated.dapui_config = function()
-  dapui.close()
-end
-dap.listeners.before.event_exited.dapui_config = function()
-  dapui.close()
-end
+-- The UI is not closed automatically when a session ends: a short lived
+-- program (`main` that prints and exits) would otherwise open and close the
+-- layout within a second and the output in the `[dap-terminal]` buffer would
+-- be hidden again. Close it manually with `<leader>du` when done.
 
 vim.keymap.set("n", "<leader>du", function()
   require("dapui").toggle({})
