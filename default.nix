@@ -109,7 +109,7 @@ let
       vim-wakatime
       which-key-nvim
       hunk-nvim
-      tv-nvim # tv already in runtime deps
+      fzf-lua
 
       # Local config as a plugin
       neovim-config

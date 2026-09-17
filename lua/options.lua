@@ -78,3 +78,5 @@ vim.opt.cmdheight = 0
 
 vim.opt.spelllang = { "en_gb", "de_de" }
 vim.opt.spell = false
+
+vim.o.showtabline = 2 -- always show tabs
