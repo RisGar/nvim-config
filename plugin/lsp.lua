@@ -38,7 +38,7 @@ vim.lsp.enable({
   "texlab",
   "tinymist",
   "ty",
-  "tsgo",
+  "tsc",
   "yamlls",
 
   -- activated through seperate plugin:
@@ -46,7 +46,7 @@ vim.lsp.enable({
   -- "rust_analyzer",
 })
 
-vim.lsp.config("tsgo", {
+vim.lsp.config("tsc", {
   init_options = {
     plugins = {
       {

@@ -48,7 +48,7 @@ let
     tinymist
     ty
     vscode-langservers-extracted
-    typescript-go
+    typescript
     yaml-language-server
     dune
     rust-analyzer
@@ -126,7 +126,7 @@ let
   extraPaths = {
     astro-ts-plugin = "${pkgs.astro-language-server}/lib/node_modules/astro-language-server/packages/language-tools/ts-plugin";
     svelte-ts-plugin = "${pkgs.svelte-language-server}/lib/node_modules/svelte-language-server/packages/typescript-plugin";
-    typescript-sdk = "${pkgs.typescript}/lib/node_modules/typescript/lib";
+    typescript-sdk = "${pkgs.typescript}/lib/node_modules/typescript/lib"; # TODO: does this work with typescript7?
     vscode-cpptools = "${pkgs.vscode-extensions.ms-vscode.cpptools}/share/vcode/extensions/ms-vscode.cpptools/debugAdapters/bin/OpenDebugAD7";
     vscode-js-debug = "${pkgs.vscode-js-debug}/bin/js-debug";
   };
