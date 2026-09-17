@@ -63,6 +63,17 @@ vim.lsp.config("tsc", {
   },
 })
 
+-- typst: typstyle with 80 columns and reflowed prose
+vim.lsp.config("tinymist", {
+  settings = {
+    formatterMode = "typstyle",
+    -- tinymist <= 0.15.x takes a boolean; newer versions accept "fill" / "sentence"
+    formatterProseWrap = true,
+    formatterPrintWidth = 80,
+    formatterIndentSize = 2,
+  },
+})
+
 -- fidget.nvim
 require("fidget").setup({ notification = { window = { winblend = 0 } } })
 
