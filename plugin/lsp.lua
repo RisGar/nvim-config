@@ -38,7 +38,7 @@ vim.lsp.enable({
   "texlab",
   "tinymist",
   "ty",
-  "tsc",
+  "tsc", -- TODO: wait for nvim-lspconfig to update in nixpkgs
   "yamlls",
 
   -- activated through seperate plugin:

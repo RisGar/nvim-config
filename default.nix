@@ -126,7 +126,7 @@ let
   extraPaths = {
     astro-ts-plugin = "${pkgs.astro-language-server}/lib/node_modules/astro-language-server/packages/language-tools/ts-plugin";
     svelte-ts-plugin = "${pkgs.svelte-language-server}/lib/node_modules/svelte-language-server/packages/typescript-plugin";
-    typescript-sdk = "${pkgs.typescript}/lib/node_modules/typescript/lib"; # TODO: does this work with typescript7?
+    typescript-sdk = "${pkgs.typescript_5}/lib/node_modules/typescript/lib"; # TODO: astro with typescript7
     vscode-cpptools = "${pkgs.vscode-extensions.ms-vscode.cpptools}/share/vcode/extensions/ms-vscode.cpptools/debugAdapters/bin/OpenDebugAD7";
     vscode-js-debug = "${pkgs.vscode-js-debug}/bin/js-debug";
   };
