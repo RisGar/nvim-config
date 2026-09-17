@@ -124,6 +124,7 @@ let
 
   # Extra paths for plugins
   extraPaths = {
+    java-debug = "${pkgs.vscode-extensions.vscjava.vscode-java-debug}/share/vscode/extensions/vscjava.vscode-java-debug/server";
     astro-ts-plugin = "${pkgs.astro-language-server}/lib/node_modules/astro-language-server/packages/language-tools/ts-plugin";
     svelte-ts-plugin = "${pkgs.svelte-language-server}/lib/node_modules/svelte-language-server/packages/typescript-plugin";
     typescript-sdk = "${pkgs.typescript_5}/lib/node_modules/typescript/lib"; # TODO: astro with typescript7
@@ -140,6 +141,7 @@ let
     vim.g.astro_ts_plugin_path = "${extraPaths.astro-ts-plugin}"
     vim.g.svelte_ts_plugin_path = "${extraPaths.svelte-ts-plugin}"
     vim.g.typescript_sdk_path = "${extraPaths.typescript-sdk}"
+    vim.g.java_debug_jar_dir = "${extraPaths.java-debug}"
     vim.g.jdks = vim.json.decode('${builtins.toJSON jdkPaths}')
     vim.g.vscode_cpptools = "${extraPaths.vscode-cpptools}"
     vim.g.vscode_js_debug = "${extraPaths.vscode-js-debug}"

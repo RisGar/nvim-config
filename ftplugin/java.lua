@@ -1,5 +1,17 @@
 vim.cmd.packadd("nvim-jdtls")
 
+-- eclipse.jdt.ls extensions ("bundles") that add debugging support.
+-- `java-debug` provides the DAP adapter and the ability to resolve a main
+-- class and its runtime classpath. The jar is provided by the Nix wrapper,
+-- see `vim.g.java_debug_jar_dir` in default.nix.
+--
+-- The bundles are only read when the server starts, so run `:LspRestart`
+-- after changing this file.
+local bundles = {}
+if vim.g.java_debug_jar_dir then
+  bundles = vim.fn.glob(vim.g.java_debug_jar_dir .. "/*.jar", false, true)
+end
+
 -- See `:help vim.lsp.start` for an overview of the supported `config` options.
 local config = {
   name = "jdtls",
@@ -48,10 +60,13 @@ local config = {
   -- you'll need to set the `bundles`
   --
   -- See https://codeberg.org/mfussenegger/nvim-jdtls#java-debug-installation
-  --
-  -- If you don't plan on any eclipse.jdt.ls plugins you can remove this
   init_options = {
-    bundles = {},
+    bundles = bundles,
   },
 }
 require("jdtls").start_or_attach(config)
+
+-- Register the `java` adapter with nvim-dap and enable main class discovery.
+-- See https://codeberg.org/mfussenegger/nvim-dap/wiki/Java
+-- The `dap.configurations.java` entries live in plugin/debug.lua
+require("jdtls").setup_dap({ hotcodereplace = "auto" })

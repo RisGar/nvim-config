@@ -27,7 +27,34 @@ dap.configurations.c = dap.configurations.cpp
 -- Configured through rustaceanvim
 
 -- Java
--- TODO: Configure through nvim-jdtls
+-- The `java` adapter is registered by `require('jdtls').setup_dap()` in
+-- ftplugin/java.lua, see https://codeberg.org/mfussenegger/nvim-dap/wiki/Java
+--
+-- Main classes discovered by eclipse.jdt.ls are added on demand by nvim-jdtls,
+-- so `:DapNew` also lists every `main` function of the project.
+dap.configurations.java = {
+  {
+    type = "java",
+    request = "launch",
+    name = "Launch Main",
+    -- `mainClass`, `projectName`, `classPaths`, `modulePaths` and `javaExec`
+    -- are resolved from the current buffer by nvim-jdtls if they're missing.
+    -- Set them explicitly to launch a program that isn't the current file:
+    -- mainClass = "your.package.name.MainClassName",
+    -- projectName = "yourProjectName",
+    -- classPaths = {},
+    -- modulePaths = {},
+    -- javaExec = "/path/to/your/bin/java",
+    console = "integratedTerminal",
+  },
+  {
+    type = "java",
+    request = "attach",
+    name = "Debug (Attach) - Remote",
+    hostName = "127.0.0.1",
+    port = 5005,
+  },
+}
 
 -- JS/TS
 dap.adapters["pwa-node"] = {
